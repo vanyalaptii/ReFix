@@ -2,12 +2,12 @@
 //  RepairCase.swift
 //  ReFix
 //
-//  Created by Ваня Лаптий on 23.12.2023.
+//  Created by Ivan Laptii on 23.12.2023.
 //
 
 import Foundation
 
-class RepairCase: Identifiable {
+class Repair: Identifiable {
     let id: Int
     var brand: String
     var model: String
@@ -15,12 +15,12 @@ class RepairCase: Identifiable {
     var imei: Int?
     var malfunction: String
     var description: String
-    let client: String //Client
+    let client: Client
     var telephone: String
     let employee: String //Employee
     var repairStatus: String //RepairStatus
     
-    init(id: Int, brand: String, model: String, serialNumber: String, imei: Int?, malfunction: String, description: String, client: String, telephone: String, employee: String, repairStatus: String) {
+    init(id: Int, brand: String, model: String, serialNumber: String, imei: Int?, malfunction: String, description: String, client: Client, telephone: String, employee: String, repairStatus: String) {
         self.id = id
         self.brand = brand
         self.model = model

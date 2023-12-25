@@ -2,7 +2,7 @@
 //  ClientsListView.swift
 //  ReFix
 //
-//  Created by Ваня Лаптий on 23.12.2023.
+//  Created by Ivan Laptii on 23.12.2023.
 //
 
 import SwiftUI
