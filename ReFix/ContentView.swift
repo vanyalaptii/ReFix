@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  ReFix
 //
-//  Created by Ваня Лаптий on 17.12.2023.
+//  Created by Ivan Laptii on 17.12.2023.
 //
 
 import SwiftUI
