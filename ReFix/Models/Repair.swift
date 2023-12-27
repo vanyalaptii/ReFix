@@ -16,7 +16,8 @@ class Repair: Identifiable {
     var malfunction: String
     var description: String
     let client: Client
-    let employee: String //Employee
+    // TODO: Create Employee model
+    let employee: String
     var repairStatus: String
     
     init(
