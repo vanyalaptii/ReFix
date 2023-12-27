@@ -20,7 +20,10 @@ struct RelpairsListView: View {
                         .padding(1)
                     Text("#\(item.id)")
                         .font(.system(size: 15))
+<<<<<<< HEAD
                         .foregroundStyle(.secondary)
+=======
+>>>>>>> main
                 })
                 Spacer()
                 HStack {
@@ -29,7 +32,10 @@ struct RelpairsListView: View {
                         .font(.system(.title3))
                         .foregroundStyle(.secondary)
                     Image(systemName: "chevron.right")
+<<<<<<< HEAD
                         .opacity(0.5)
+=======
+>>>>>>> main
                 }
             }
             .padding(1)

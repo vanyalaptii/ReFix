@@ -1,5 +1,5 @@
 //
-//  Client.swift
+//  ConterAgent.swift
 //  ReFix
 //
 //  Created by Ivan Laptii on 25.12.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Client {
+class ConterAgent {
     let id: Int
     var name: String
     var phoneNumber: String
@@ -16,15 +16,7 @@ class Client {
     init(id: Int, name: String, phoneNumber: String, email: String) {
         self.id = id
         self.name = name
-<<<<<<< HEAD
         self.phoneNumber = phoneNumber
         self.email = email
     }
 }
-
-=======
-        self.phoneNumber = telephone
-        self.email = email
-    }
-}
->>>>>>> main
