@@ -16,11 +16,21 @@ class Repair: Identifiable {
     var malfunction: String
     var description: String
     let client: Client
-    var telephone: String
     let employee: String //Employee
-    var repairStatus: String //RepairStatus
+    var repairStatus: String
     
-    init(id: Int, brand: String, model: String, serialNumber: String, imei: Int?, malfunction: String, description: String, client: Client, telephone: String, employee: String, repairStatus: String) {
+    init(
+        id: Int,
+        brand: String,
+        model: String,
+        serialNumber: String,
+        imei: Int?,
+        malfunction: String,
+        description: String,
+        client: Client,
+        employee: String,
+        repairStatus: String
+    ) {
         self.id = id
         self.brand = brand
         self.model = model
@@ -29,7 +39,6 @@ class Repair: Identifiable {
         self.malfunction = malfunction
         self.description = description
         self.client = client
-        self.telephone = telephone
         self.employee = employee
         self.repairStatus = repairStatus
     }
@@ -37,7 +46,7 @@ class Repair: Identifiable {
 
 extension Repair {
     
-    static let repairsArray = [
+    static let repairsMocked = [
         Repair(
             id: 1,
             brand: "Apple",
@@ -47,7 +56,6 @@ extension Repair {
             malfunction: "Швидко розряджається",
             description: "Подряпини єкрану",
             client: Client(id: 1, name: "Микола", phoneNumber: "09768459327", email: "testmail@gmail.com"),
-            telephone: "0976354213",
             employee: "Світлана",
             repairStatus: "Узгодження"),
 
@@ -60,7 +68,6 @@ extension Repair {
             malfunction: "Розбитий екран",
             description: "Потертості",
             client: Client(id: 2, name: "Іван Федорович", phoneNumber: "0682686451", email: "testmail2@gmail.com"),
-            telephone: "0686754387",
             employee: "Олена",
             repairStatus: "Виконано")
     ]

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RelpairsListView: View {
 
-    @State var repairsArray = ResourceLoader.shared.loadAlarmList()
+    @State var repairsArray = Repair.repairsMocked
 
     var body: some View {
         List(repairsArray) { item in
