@@ -19,7 +19,6 @@
 		C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617942B3A0FA80023A746 /* ConterAgent.swift */; };
 		C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617962B3A17320023A746 /* RepairsListView.swift */; };
 		C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0A2B36B6A2009C3EBC /* Repair.swift */; };
-		C3F87D0D2B36C796009C3EBC /* RelpairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0C2B36C796009C3EBC /* RelpairsListView.swift */; };
 		C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */; };
 		C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */; };
 /* End PBXBuildFile section */
@@ -58,7 +57,6 @@
 		C3A617942B3A0FA80023A746 /* ConterAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConterAgent.swift; sourceTree = "<group>"; };
 		C3A617962B3A17320023A746 /* RepairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsListView.swift; sourceTree = "<group>"; };
 		C3F87D0A2B36B6A2009C3EBC /* Repair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repair.swift; sourceTree = "<group>"; };
-		C3F87D0C2B36C796009C3EBC /* RelpairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelpairsListView.swift; sourceTree = "<group>"; };
 		C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsListView.swift; sourceTree = "<group>"; };
 		C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteragentListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				C3243E7C2B2F913000071C8F /* MainView.swift */,
-				C3F87D0C2B36C796009C3EBC /* RelpairsListView.swift */,
 				C3A617962B3A17320023A746 /* RepairsListView.swift */,
 				C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */,
 				C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */,
@@ -305,7 +302,6 @@
 				C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */,
 				C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */,
 				C3243E7B2B2F913000071C8F /* ReFixApp.swift in Sources */,
-				C3F87D0D2B36C796009C3EBC /* RelpairsListView.swift in Sources */,
 				C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */,
 				C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */,
 				C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */,

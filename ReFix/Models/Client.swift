@@ -16,7 +16,7 @@ class Client {
     init(id: Int, name: String, phoneNumber: String, email: String) {
         self.id = id
         self.name = name
-        self.phoneNumber = telephone
+        self.phoneNumber = phoneNumber
         self.email = email
     }
 }
