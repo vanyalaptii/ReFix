@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		C3243E7B2B2F913000071C8F /* ReFixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E7A2B2F913000071C8F /* ReFixApp.swift */; };
-		C3243E7D2B2F913000071C8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E7C2B2F913000071C8F /* ContentView.swift */; };
+		C3243E7D2B2F913000071C8F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E7C2B2F913000071C8F /* MainView.swift */; };
 		C3243E7F2B2F913200071C8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3243E7E2B2F913200071C8F /* Assets.xcassets */; };
 		C3243E822B2F913200071C8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3243E812B2F913200071C8F /* Preview Assets.xcassets */; };
 		C3243E8C2B2F913200071C8F /* ReFixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E8B2B2F913200071C8F /* ReFixTests.swift */; };
 		C3243E962B2F913200071C8F /* ReFixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E952B2F913200071C8F /* ReFixUITests.swift */; };
 		C3243E982B2F913200071C8F /* ReFixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */; };
 		C3243EA82B2FB6F700071C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */; };
+		C3A617932B3A0EFB0023A746 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617922B3A0EFB0023A746 /* Client.swift */; };
+		C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617942B3A0FA80023A746 /* ConterAgent.swift */; };
+		C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617962B3A17320023A746 /* RepairsListView.swift */; };
+		C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0A2B36B6A2009C3EBC /* Repair.swift */; };
+		C3F87D0D2B36C796009C3EBC /* RelpairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0C2B36C796009C3EBC /* RelpairsListView.swift */; };
+		C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */; };
+		C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +44,7 @@
 /* Begin PBXFileReference section */
 		C3243E772B2F913000071C8F /* ReFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3243E7A2B2F913000071C8F /* ReFixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReFixApp.swift; sourceTree = "<group>"; };
-		C3243E7C2B2F913000071C8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3243E7C2B2F913000071C8F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C3243E7E2B2F913200071C8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3243E812B2F913200071C8F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C3243E872B2F913200071C8F /* ReFixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReFixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +54,13 @@
 		C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReFixUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C3243EA62B2FB40800071C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C3A617922B3A0EFB0023A746 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		C3A617942B3A0FA80023A746 /* ConterAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConterAgent.swift; sourceTree = "<group>"; };
+		C3A617962B3A17320023A746 /* RepairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsListView.swift; sourceTree = "<group>"; };
+		C3F87D0A2B36B6A2009C3EBC /* Repair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repair.swift; sourceTree = "<group>"; };
+		C3F87D0C2B36C796009C3EBC /* RelpairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelpairsListView.swift; sourceTree = "<group>"; };
+		C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsListView.swift; sourceTree = "<group>"; };
+		C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteragentListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +113,8 @@
 			children = (
 				C3243EA62B2FB40800071C8F /* Info.plist */,
 				C3243E7A2B2F913000071C8F /* ReFixApp.swift */,
-				C3243E7C2B2F913000071C8F /* ContentView.swift */,
+				C3F87D092B36B64E009C3EBC /* Models */,
+				C3F87D062B36B601009C3EBC /* Views */,
 				C3243E7E2B2F913200071C8F /* Assets.xcassets */,
 				C3243E802B2F913200071C8F /* Preview Content */,
 				C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */,
@@ -130,6 +145,28 @@
 				C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */,
 			);
 			path = ReFixUITests;
+			sourceTree = "<group>";
+		};
+		C3F87D062B36B601009C3EBC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3243E7C2B2F913000071C8F /* MainView.swift */,
+				C3F87D0C2B36C796009C3EBC /* RelpairsListView.swift */,
+				C3A617962B3A17320023A746 /* RepairsListView.swift */,
+				C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */,
+				C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C3F87D092B36B64E009C3EBC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C3F87D0A2B36B6A2009C3EBC /* Repair.swift */,
+				C3A617922B3A0EFB0023A746 /* Client.swift */,
+				C3A617942B3A0FA80023A746 /* ConterAgent.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +300,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3243E7D2B2F913000071C8F /* ContentView.swift in Sources */,
+				C3243E7D2B2F913000071C8F /* MainView.swift in Sources */,
+				C3A617932B3A0EFB0023A746 /* Client.swift in Sources */,
+				C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */,
+				C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */,
 				C3243E7B2B2F913000071C8F /* ReFixApp.swift in Sources */,
+				C3F87D0D2B36C796009C3EBC /* RelpairsListView.swift in Sources */,
+				C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */,
+				C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */,
+				C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +476,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReFix/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -463,6 +508,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReFix/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;

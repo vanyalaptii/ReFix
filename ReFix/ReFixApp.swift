@@ -2,7 +2,7 @@
 //  ReFixApp.swift
 //  ReFix
 //
-//  Created by Ваня Лаптий on 17.12.2023.
+//  Created by Ivan Laptii on 17.12.2023.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct ReFixApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
