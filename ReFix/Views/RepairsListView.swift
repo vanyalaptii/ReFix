@@ -31,15 +31,7 @@ struct RelpairsListView: View {
                         
                         Spacer()
                         
-                        HStack {
-                            Text("Detail")
-                                .font(.system(size: 17))
-                                .font(.system(.title3))
-                                .foregroundStyle(.secondary)
-                            
-                            Image(systemName: "chevron.right")
-                                .opacity(0.5)
-                        }
+                        details
                     }
                     .padding(.horizontal)
                     
@@ -65,16 +57,30 @@ struct RelpairsListView: View {
     }
     
     var searchResults: [Repair] {
-            if searchText.isEmpty {
-                return repairsArray
-            } else {
-                return repairsArray.filter { $0.model.contains(searchText) }
-                     + repairsArray.filter { $0.brand.contains(searchText) }
-                     + repairsArray.filter { $0.id.description.contains(searchText) }
-                     + repairsArray.filter { $0.client.name.contains(searchText) }
-                     + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
-            }
+        if searchText.isEmpty {
+            return repairsArray
+        } else {
+            return repairsArray.filter { $0.model.contains(searchText) }
+                 + repairsArray.filter { $0.brand.contains(searchText) }
+                 + repairsArray.filter { $0.id.description.contains(searchText) }
+                 + repairsArray.filter { $0.client.name.contains(searchText) }
+                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
         }
+    }
+}
+
+extension RelpairsListView {
+    var details: some View {
+        HStack {
+            Text("Detail")
+                .font(.system(size: 17))
+                .font(.system(.title3))
+                .foregroundStyle(.secondary)
+            
+            Image(systemName: "chevron.right")
+                .opacity(0.5)
+        }
+    }
 }
 
 #Preview {
