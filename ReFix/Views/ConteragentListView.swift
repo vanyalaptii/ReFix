@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConteragentListView: View {
     var body: some View {
-        Text("Hello, World!3")
+        Text("Conteragents")
     }
 }
 

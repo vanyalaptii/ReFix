@@ -22,7 +22,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="ReFixLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQF-TG-1tq">
-                                <rect key="frame" x="38" y="358" width="315" height="136"/>
+                                <rect key="frame" x="38.577677224733407" y="357.99999999997578" width="315.00000000000023" height="135.99999999998903"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

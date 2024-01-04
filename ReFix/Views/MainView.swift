@@ -14,21 +14,24 @@ struct MainView: View {
                 .tabItem {
                     Label("Ремонти", systemImage: "list.dash.header.rectangle")
                 }
-                .toolbarBackground(Color.white, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
             
             ClientsListView()
                 .tabItem {
-                    Label("Клієнти", systemImage: "person.crop.circle")
+                    Label("Клієнти", systemImage: "person.2")
                 }
-                .toolbarBackground(Color.white, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
             
             ConteragentListView()
                 .tabItem {
                     Label("Контрагенти", systemImage: "wrench.and.screwdriver.fill")
                 }
-                .toolbarBackground(Color.white, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+            
+            ProfileView()
+                .tabItem {
+                    Label("Профіль", systemImage: "person.crop.rectangle")
+                }
                 .toolbarBackground(.visible, for: .tabBar)
         }
     }
