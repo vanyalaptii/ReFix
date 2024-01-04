@@ -15,6 +15,8 @@
 		C3243E962B2F913200071C8F /* ReFixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E952B2F913200071C8F /* ReFixUITests.swift */; };
 		C3243E982B2F913200071C8F /* ReFixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */; };
 		C3243EA82B2FB6F700071C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */; };
+		C395D1172B3FD93300B6F3D4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395D1162B3FD93300B6F3D4 /* LoginView.swift */; };
+		C395D1192B3FD99100B6F3D4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395D1182B3FD99100B6F3D4 /* ProfileView.swift */; };
 		C3A617932B3A0EFB0023A746 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617922B3A0EFB0023A746 /* Client.swift */; };
 		C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617942B3A0FA80023A746 /* ConterAgent.swift */; };
 		C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617962B3A17320023A746 /* RepairsListView.swift */; };
@@ -53,6 +55,8 @@
 		C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReFixUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C3243EA62B2FB40800071C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C395D1162B3FD93300B6F3D4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C395D1182B3FD99100B6F3D4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C3A617922B3A0EFB0023A746 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		C3A617942B3A0FA80023A746 /* ConterAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConterAgent.swift; sourceTree = "<group>"; };
 		C3A617962B3A17320023A746 /* RepairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsListView.swift; sourceTree = "<group>"; };
@@ -148,10 +152,12 @@
 		C3F87D062B36B601009C3EBC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C395D1162B3FD93300B6F3D4 /* LoginView.swift */,
 				C3243E7C2B2F913000071C8F /* MainView.swift */,
 				C3A617962B3A17320023A746 /* RepairsListView.swift */,
 				C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */,
 				C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */,
+				C395D1182B3FD99100B6F3D4 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,7 +305,9 @@
 			files = (
 				C3243E7D2B2F913000071C8F /* MainView.swift in Sources */,
 				C3A617932B3A0EFB0023A746 /* Client.swift in Sources */,
+				C395D1192B3FD99100B6F3D4 /* ProfileView.swift in Sources */,
 				C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */,
+				C395D1172B3FD93300B6F3D4 /* LoginView.swift in Sources */,
 				C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */,
 				C3243E7B2B2F913000071C8F /* ReFixApp.swift in Sources */,
 				C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */,

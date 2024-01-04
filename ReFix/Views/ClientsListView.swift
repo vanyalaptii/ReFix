@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClientsListView: View {
     var body: some View {
-        Text("Hello, World!2")
+        Text("Clients")
     }
 }
 

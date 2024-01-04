@@ -18,13 +18,19 @@ struct MainView: View {
             
             ClientsListView()
                 .tabItem {
-                    Label("Клієнти", systemImage: "person.crop.circle")
+                    Label("Клієнти", systemImage: "person.2")
                 }
                 .toolbarBackground(.visible, for: .tabBar)
             
             ConteragentListView()
                 .tabItem {
                     Label("Контрагенти", systemImage: "wrench.and.screwdriver.fill")
+                }
+                .toolbarBackground(.visible, for: .tabBar)
+            
+            ProfileView()
+                .tabItem {
+                    Label("Профіль", systemImage: "person.crop.rectangle")
                 }
                 .toolbarBackground(.visible, for: .tabBar)
         }
