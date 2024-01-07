@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SignUpView: View {
     
@@ -13,15 +14,25 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var passwordConfirmation: String = ""
     @State var companyName: String = ""
+    @State var userIsLoggedIn = false
     
     var body: some View {
         
-        signUpView
+        if userIsLoggedIn {
+            MainView()
+        } else {
+            signUpView
+        }
         
     }
     
-    //TODO: register function
-    
+    func register() {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
 }
 
 extension SignUpView {
@@ -57,6 +68,7 @@ extension SignUpView {
                     .textInputAutocapitalization(.sentences)
                 
             }
+            .scrollDisabled(true)
             .scrollContentBackground(.hidden)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.never)
@@ -72,7 +84,7 @@ extension SignUpView {
             Spacer()
             
             Button ("Зареєструватись") {
-                //TODO: registration
+                register()
             }
             .padding(10)
             .foregroundStyle(.white)
@@ -83,6 +95,16 @@ extension SignUpView {
         }
         .background(Color(.secondarySystemBackground))
         .ignoresSafeArea()
+        .onTapGesture {
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.endEditing(true)
+        }
+        .onAppear {
+            Auth.auth().addStateDidChangeListener { auth, user in
+                if user != nil {
+                    userIsLoggedIn.toggle()
+                }
+            }
+        }
     }
 }
 

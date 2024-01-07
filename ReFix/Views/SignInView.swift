@@ -60,6 +60,7 @@ extension SignInView {
                     text: $password
                 )
             }
+            .scrollDisabled(true)
             .scrollContentBackground(.hidden)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.never)
@@ -93,6 +94,9 @@ extension SignInView {
         }
         .background(Color(.secondarySystemBackground))
         .ignoresSafeArea()
+        .onTapGesture {
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.endEditing(true)
+        }
     }
 }
 
