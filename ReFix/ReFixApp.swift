@@ -16,7 +16,7 @@ struct ReFixApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            SignInView()
+            AuthView()
         }
     }
 }
