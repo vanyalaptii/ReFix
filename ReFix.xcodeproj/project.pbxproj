@@ -24,6 +24,9 @@
 		C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617962B3A17320023A746 /* RepairsListView.swift */; };
 		C3C904682B4B219C000B4251 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3C904672B4B219C000B4251 /* GoogleService-Info.plist */; };
 		C3C9046A2B4CAE9C000B4251 /* ClearButtonViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C904692B4CAE9C000B4251 /* ClearButtonViewModifier.swift */; };
+		C3C9046D2B4F57CD000B4251 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9046C2B4F57CD000B4251 /* SignInView.swift */; };
+		C3C9046F2B4F57F8000B4251 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9046E2B4F57F8000B4251 /* SignUpView.swift */; };
+		C3C904712B4F5832000B4251 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C904702B4F5832000B4251 /* AuthViewModel.swift */; };
 		C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0A2B36B6A2009C3EBC /* Repair.swift */; };
 		C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */; };
 		C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */; };
@@ -66,6 +69,9 @@
 		C3A617962B3A17320023A746 /* RepairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsListView.swift; sourceTree = "<group>"; };
 		C3C904672B4B219C000B4251 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C3C904692B4CAE9C000B4251 /* ClearButtonViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButtonViewModifier.swift; sourceTree = "<group>"; };
+		C3C9046C2B4F57CD000B4251 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		C3C9046E2B4F57F8000B4251 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		C3C904702B4F5832000B4251 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C3F87D0A2B36B6A2009C3EBC /* Repair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repair.swift; sourceTree = "<group>"; };
 		C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsListView.swift; sourceTree = "<group>"; };
 		C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteragentListView.swift; sourceTree = "<group>"; };
@@ -123,10 +129,11 @@
 			children = (
 				C3C904672B4B219C000B4251 /* GoogleService-Info.plist */,
 				C3243EA62B2FB40800071C8F /* Info.plist */,
-				C3243E7A2B2F913000071C8F /* ReFixApp.swift */,
 				C3F87D092B36B64E009C3EBC /* Models */,
 				C3F87D062B36B601009C3EBC /* Views */,
+				C35B38022B4F716200D983D8 /* ViewModels */,
 				C3243E7E2B2F913200071C8F /* Assets.xcassets */,
+				C3243E7A2B2F913000071C8F /* ReFixApp.swift */,
 				C3243E802B2F913200071C8F /* Preview Content */,
 				C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */,
 			);
@@ -158,16 +165,42 @@
 			path = ReFixUITests;
 			sourceTree = "<group>";
 		};
-		C3F87D062B36B601009C3EBC /* Views */ = {
+		C35B38022B4F716200D983D8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C3C904702B4F5832000B4251 /* AuthViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C35B38032B4F7F8100D983D8 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C3C904692B4CAE9C000B4251 /* ClearButtonViewModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		C3C9046B2B4F5797000B4251 /* AuthView */ = {
 			isa = PBXGroup;
 			children = (
 				C395D1162B3FD93300B6F3D4 /* AuthView.swift */,
+				C3C9046C2B4F57CD000B4251 /* SignInView.swift */,
+				C3C9046E2B4F57F8000B4251 /* SignUpView.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
+		C3F87D062B36B601009C3EBC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3C9046B2B4F5797000B4251 /* AuthView */,
 				C3243E7C2B2F913000071C8F /* MainView.swift */,
 				C3A617962B3A17320023A746 /* RepairsListView.swift */,
 				C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */,
 				C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */,
 				C395D1182B3FD99100B6F3D4 /* ProfileView.swift */,
-				C3C904692B4CAE9C000B4251 /* ClearButtonViewModifier.swift */,
+				C35B38032B4F7F8100D983D8 /* Modifiers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,8 +360,11 @@
 				C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */,
 				C395D1172B3FD93300B6F3D4 /* AuthView.swift in Sources */,
 				C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */,
+				C3C9046D2B4F57CD000B4251 /* SignInView.swift in Sources */,
 				C3243E7B2B2F913000071C8F /* ReFixApp.swift in Sources */,
+				C3C9046F2B4F57F8000B4251 /* SignUpView.swift in Sources */,
 				C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */,
+				C3C904712B4F5832000B4251 /* AuthViewModel.swift in Sources */,
 				C3C9046A2B4CAE9C000B4251 /* ClearButtonViewModifier.swift in Sources */,
 				C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */,
 				C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */,
