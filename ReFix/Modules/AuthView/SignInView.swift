@@ -22,6 +22,7 @@ struct SignInView: View {
             signInButton
             Spacer()
         }
+        .background(Color(.secondarySystemBackground))
         .onTapGesture {
             isFocused = false
         }

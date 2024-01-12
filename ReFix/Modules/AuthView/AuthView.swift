@@ -23,7 +23,6 @@ struct AuthView: View {
                         .environmentObject(viewModel)
                 }
             }
-            .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
             .ignoresSafeArea()
         }
         .onTapGesture {

@@ -21,6 +21,7 @@ struct SignUpView: View {
             registerButton
             Spacer()
         }
+        .background(Color(.secondarySystemBackground))
         .onTapGesture {
             isFocused = false
         }

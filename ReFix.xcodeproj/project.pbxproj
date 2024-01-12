@@ -130,8 +130,8 @@
 				C3C904672B4B219C000B4251 /* GoogleService-Info.plist */,
 				C3243EA62B2FB40800071C8F /* Info.plist */,
 				C3F87D092B36B64E009C3EBC /* Models */,
+				C35B38062B514E2500D983D8 /* Modules */,
 				C3F87D062B36B601009C3EBC /* Views */,
-				C35B38022B4F716200D983D8 /* ViewModels */,
 				C3243E7E2B2F913200071C8F /* Assets.xcassets */,
 				C3243E7A2B2F913000071C8F /* ReFixApp.swift */,
 				C3243E802B2F913200071C8F /* Preview Content */,
@@ -165,14 +165,6 @@
 			path = ReFixUITests;
 			sourceTree = "<group>";
 		};
-		C35B38022B4F716200D983D8 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				C3C904702B4F5832000B4251 /* AuthViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		C35B38032B4F7F8100D983D8 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,9 +173,18 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		C35B38062B514E2500D983D8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C3C9046B2B4F5797000B4251 /* AuthView */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		C3C9046B2B4F5797000B4251 /* AuthView */ = {
 			isa = PBXGroup;
 			children = (
+				C3C904702B4F5832000B4251 /* AuthViewModel.swift */,
 				C395D1162B3FD93300B6F3D4 /* AuthView.swift */,
 				C3C9046C2B4F57CD000B4251 /* SignInView.swift */,
 				C3C9046E2B4F57F8000B4251 /* SignUpView.swift */,
@@ -194,7 +195,6 @@
 		C3F87D062B36B601009C3EBC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C3C9046B2B4F5797000B4251 /* AuthView */,
 				C3243E7C2B2F913000071C8F /* MainView.swift */,
 				C3A617962B3A17320023A746 /* RepairsListView.swift */,
 				C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */,
