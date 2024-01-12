@@ -21,9 +21,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="ReFixLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQF-TG-1tq">
-                                <rect key="frame" x="38.577677224733407" y="357.99999999997578" width="315.00000000000023" height="135.99999999998903"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bQF-TG-1tq">
+                                <rect key="frame" x="39" y="358" width="315" height="136"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ReFixLogo" width="877" height="281"/>
+        <image name="AppLogo" width="877" height="281"/>
     </resources>
 </document>
