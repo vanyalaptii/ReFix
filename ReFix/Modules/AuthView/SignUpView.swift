@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @Binding var showAuthView: Bool
     @EnvironmentObject var viewModel: AuthViewModel
     @FocusState var isFocused: Bool
     
@@ -74,7 +75,14 @@ extension SignUpView {
     
     var registerButton: some View {
         Button ("Зареєструватись") {
-            viewModel.register()
+            Task {
+                do {
+                    try await viewModel.signUp()
+                } catch {
+                    print(error)
+                    print(error.localizedDescription)
+                }
+            }
         }
         .padding(10)
         .buttonStyle(.borderedProminent)
@@ -82,6 +90,6 @@ extension SignUpView {
 }
 
 #Preview {
-    SignUpView()
+    SignUpView(showAuthView: .constant(false))
         .environmentObject(AuthViewModel())
 }

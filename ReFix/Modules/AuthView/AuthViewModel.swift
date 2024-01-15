@@ -9,12 +9,14 @@ import Foundation
 import Firebase
 import SwiftUI
 
+@MainActor
 final class AuthViewModel: ObservableObject {
     enum AuthState {
         case signIn
         case signUp
     }
     
+    @Published var showAuthView: Bool = false
     @Published var isFocused: Bool = false
     @Published var authState: AuthState = .signIn
     @Published var email: String = ""
@@ -22,21 +24,54 @@ final class AuthViewModel: ObservableObject {
     @Published var passwordConfirmation: String = ""
     @Published var companyName: String = ""
     
-    
-    func login() {
-        //TODO: login function
-    }
-    
-    func register() {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
+    func signIn() async throws {
+        guard !email.isEmpty, !password.isEmpty else {
+            print("Email or Password is empty.")
+            return
         }
+        guard email.contains("@") else {
+            print("Email is not correct.")
+            return
+        }
+        guard password.count >= 8 else {
+            print("Password mismatch.")
+            return
+        }
+        
+        try await AuthenticationManager.shared.signIn(email: email, password: password)
+        showAuthView = false
     }
     
-    func focusOff() {
-        isFocused = false
+    func signUp() async throws {
+        guard !email.isEmpty, !password.isEmpty else {
+            print("Email or Password is empty.")
+            return
+        }
+        guard password == passwordConfirmation else {
+            print("Password mismatch.")
+            return
+        }
+        guard email.contains("@") else {
+            print("Email is not correct.")
+            return
+        }
+        guard password.count >= 8 else {
+            print("Password mismatch.")
+            return
+        }
+        
+        try await AuthenticationManager.shared.createUser(email: email, password: password)
+        showAuthView = false
     }
     
+    func resetPassword(email: String) async throws {
+        //TODO: Provide a normal way to get a user email
+//        let authUser = try AuthenticationManager.shared.getAuthenticatedUser()
+//        guard let email = authUser.email else {
+//            throw URLError(.userAuthenticationRequired)
+//        }
+                
+        try await AuthenticationManager.shared.resetPassword(email: email)
+        print("Password reset!")
+    }
 }

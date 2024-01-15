@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
     
+    @Binding var showAuthView: Bool
     @EnvironmentObject var viewModel: AuthViewModel
     @FocusState var isFocused: Bool
     
@@ -78,7 +79,14 @@ extension SignInView {
     
     var forgotPasswordButton: some View {
         Button("Забули пароль?") {
-            //TODO: navigation to forgot password
+            Task {
+                do {
+                    try await viewModel.resetPassword(email: viewModel.email)
+                } catch {
+                    print(error)
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
     
@@ -94,6 +102,15 @@ extension SignInView {
     
     var signInButton: some View {
         Button ("Увійти") {
+            Task {
+                do {
+                    try await viewModel.signIn()
+                } catch {
+                    print(error)
+                    print(error.localizedDescription)
+
+                }
+            }
         }
         .padding(10)
         .buttonStyle(.borderedProminent)
@@ -101,6 +118,6 @@ extension SignInView {
 }
 
 #Preview {
-    SignInView()
+    SignInView(showAuthView: .constant(false))
         .environmentObject(AuthViewModel())
 }

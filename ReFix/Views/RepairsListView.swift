@@ -39,8 +39,6 @@ struct RelpairsListView: View {
                         .stroke(Color(uiColor: .tertiaryLabel), lineWidth: 1)
                 }
                 .listRowSeparator(.hidden)
-                
-                
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
