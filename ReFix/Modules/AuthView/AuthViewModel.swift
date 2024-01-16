@@ -11,12 +11,12 @@ import SwiftUI
 
 @MainActor
 final class AuthViewModel: ObservableObject {
+    
     enum AuthState {
         case signIn
         case signUp
     }
     
-    @Published var showAuthView: Bool = false
     @Published var isFocused: Bool = false
     @Published var authState: AuthState = .signIn
     @Published var email: String = ""
@@ -39,7 +39,6 @@ final class AuthViewModel: ObservableObject {
         }
         
         try await AuthenticationManager.shared.signIn(email: email, password: password)
-        showAuthView = false
     }
     
     func signUp() async throws {
@@ -61,7 +60,6 @@ final class AuthViewModel: ObservableObject {
         }
         
         try await AuthenticationManager.shared.createUser(email: email, password: password)
-        showAuthView = false
     }
     
     func resetPassword(email: String) async throws {

@@ -8,21 +8,16 @@
 import Foundation
 import FirebaseAuth
 
-struct AuthDataResultModel {
-    let uid: String
-    let email: String?
-    
-    init(user: User) {
-        self.uid = user.uid
-        self.email = user.email
-    }
-}
-
 final class AuthenticationManager {
     static let shared = AuthenticationManager()
     private init(){}
     
-    func getAuthenticatedUser () throws -> AuthDataResultModel {
+    func isHaveLoggedUser() -> Bool {
+        let authUser = try? getAuthenticatedUser()
+        return authUser == nil ? false : true
+    }
+    
+    func getAuthenticatedUser() throws -> AuthDataResultModel {
         guard let user = Auth.auth().currentUser else {
             throw URLError(.badServerResponse)
         }

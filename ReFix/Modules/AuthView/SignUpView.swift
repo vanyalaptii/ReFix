@@ -78,6 +78,7 @@ extension SignUpView {
             Task {
                 do {
                     try await viewModel.signUp()
+                    showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
                 } catch {
                     print(error)
                     print(error.localizedDescription)

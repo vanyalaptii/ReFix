@@ -105,6 +105,7 @@ extension SignInView {
             Task {
                 do {
                     try await viewModel.signIn()
+                    showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
                 } catch {
                     print(error)
                     print(error.localizedDescription)
