@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AuthView: View {
-    @Binding var showAuthView: Bool
     @EnvironmentObject var viewModel: AuthViewModel
     @FocusState var isFocused: Bool
     
@@ -16,10 +15,10 @@ struct AuthView: View {
         NavigationStack {
             VStack {
                 if viewModel.authState == .signIn {
-                    SignInView(showAuthView: $showAuthView)
+                    SignInView()
                         .environmentObject(viewModel)
                 } else if viewModel.authState == .signUp {
-                    SignUpView(showAuthView: $showAuthView)
+                    SignUpView()
                         .environmentObject(viewModel)
                 }
             }
@@ -32,5 +31,5 @@ struct AuthView: View {
 }
 
 #Preview {
-    AuthView(showAuthView: .constant(false))
+    AuthView()
 }

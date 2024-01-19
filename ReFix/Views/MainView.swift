@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     
     @StateObject var authViewModel = AuthViewModel()
-    @State var showAuthView: Bool = !AuthenticationManager.shared.isHaveLoggedUser()
     
     var body: some View {
         ZStack {
@@ -33,7 +32,7 @@ struct MainView: View {
                     }
                     .toolbarBackground(.visible, for: .tabBar)
                 
-                ProfileView(showAuthView: $showAuthView)
+                ProfileView(showAuthView: $authViewModel.showAuthView)
                     .tabItem {
                         Label("Профіль", systemImage: "person.crop.rectangle")
                     }
@@ -41,9 +40,9 @@ struct MainView: View {
                     .toolbarBackground(.visible, for: .navigationBar)
             }
         }
-        .fullScreenCover(isPresented: $showAuthView) {
-                AuthView(showAuthView: $showAuthView)
-                    .environmentObject(authViewModel)
+        .fullScreenCover(isPresented: $authViewModel.showAuthView) {
+            AuthView()
+                .environmentObject(authViewModel)
         }
     }
 }

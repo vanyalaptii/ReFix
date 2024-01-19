@@ -17,12 +17,20 @@ final class AuthViewModel: ObservableObject {
         case signUp
     }
     
+    @Published var showAuthView: Bool = !AuthenticationManager.shared.isHaveLoggedUser()
     @Published var isFocused: Bool = false
     @Published var authState: AuthState = .signIn
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var passwordConfirmation: String = ""
     @Published var companyName: String = ""
+    
+    func cleanUp() {
+        email = ""
+        password = ""
+        passwordConfirmation = ""
+        companyName = ""
+    }
     
     func signIn() async throws {
         guard !email.isEmpty, !password.isEmpty else {
@@ -39,6 +47,8 @@ final class AuthViewModel: ObservableObject {
         }
         
         try await AuthenticationManager.shared.signIn(email: email, password: password)
+        showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
+        cleanUp()
     }
     
     func signUp() async throws {
@@ -60,16 +70,11 @@ final class AuthViewModel: ObservableObject {
         }
         
         try await AuthenticationManager.shared.createUser(email: email, password: password)
+        showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
+        cleanUp()
     }
     
     func resetPassword(email: String) async throws {
         //TODO: Provide a normal way to get a user email
-//        let authUser = try AuthenticationManager.shared.getAuthenticatedUser()
-//        guard let email = authUser.email else {
-//            throw URLError(.userAuthenticationRequired)
-//        }
-                
-        try await AuthenticationManager.shared.resetPassword(email: email)
-        print("Password reset!")
     }
 }

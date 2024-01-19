@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @Binding var showAuthView: Bool
     @EnvironmentObject var viewModel: AuthViewModel
     @FocusState var isFocused: Bool
     
@@ -78,7 +77,6 @@ extension SignUpView {
             Task {
                 do {
                     try await viewModel.signUp()
-                    showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
                 } catch {
                     print(error)
                     print(error.localizedDescription)
@@ -91,6 +89,6 @@ extension SignUpView {
 }
 
 #Preview {
-    SignUpView(showAuthView: .constant(false))
+    SignUpView()
         .environmentObject(AuthViewModel())
 }
