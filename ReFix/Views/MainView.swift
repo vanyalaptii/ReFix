@@ -13,24 +13,27 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            TabView {
+            TabView(selection: $authViewModel.tabSelection) {
                 RelpairsListView()
                     .tabItem {
                         Label("Ремонти", systemImage: "list.dash.header.rectangle")
                     }
                     .toolbarBackground(.visible, for: .tabBar)
+                    .tag("Relpairs")
                 
                 ClientsListView()
                     .tabItem {
                         Label("Клієнти", systemImage: "person.2")
                     }
                     .toolbarBackground(.visible, for: .tabBar)
+                    .tag("Clients")
                 
                 ConteragentListView()
                     .tabItem {
                         Label("Контрагенти", systemImage: "wrench.and.screwdriver.fill")
                     }
                     .toolbarBackground(.visible, for: .tabBar)
+                    .tag("Conteragent")
                 
                 ProfileView(showAuthView: $authViewModel.showAuthView)
                     .tabItem {
@@ -38,6 +41,7 @@ struct MainView: View {
                     }
                     .toolbarBackground(.visible, for: .tabBar)
                     .toolbarBackground(.visible, for: .navigationBar)
+                    .tag("ProfileView")
             }
         }
         .fullScreenCover(isPresented: $authViewModel.showAuthView) {

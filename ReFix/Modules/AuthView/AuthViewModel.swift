@@ -17,6 +17,7 @@ final class AuthViewModel: ObservableObject {
         case signUp
     }
     
+    @Published var tabSelection: String = "first"
     @Published var showAuthView: Bool = !AuthenticationManager.shared.isHaveLoggedUser()
     @Published var isFocused: Bool = false
     @Published var authState: AuthState = .signIn
@@ -30,6 +31,10 @@ final class AuthViewModel: ObservableObject {
         password = ""
         passwordConfirmation = ""
         companyName = ""
+    }
+    
+    func focusOn(screen tag: String) {
+        tabSelection = tag
     }
     
     func signIn() async throws {
@@ -49,6 +54,7 @@ final class AuthViewModel: ObservableObject {
         try await AuthenticationManager.shared.signIn(email: email, password: password)
         showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
         cleanUp()
+        focusOn(screen: "Relpairs")
     }
     
     func signUp() async throws {
@@ -72,6 +78,7 @@ final class AuthViewModel: ObservableObject {
         try await AuthenticationManager.shared.createUser(email: email, password: password)
         showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
         cleanUp()
+        focusOn(screen: "Relpairs")
     }
     
     func resetPassword(email: String) async throws {
