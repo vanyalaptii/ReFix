@@ -11,20 +11,30 @@ import SwiftUI
 
 @MainActor
 final class AuthViewModel: ObservableObject {
-    
     enum AuthState {
         case signIn
         case signUp
     }
     
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
+    @Published var isUserLoggedIn: Bool
     @Published var tabSelection: String = "first"
-    @Published var showAuthView: Bool = !AuthenticationManager.shared.isHaveLoggedUser()
-    @Published var isFocused: Bool = false
     @Published var authState: AuthState = .signIn
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var passwordConfirmation: String = ""
     @Published var companyName: String = ""
+    
+    init() {
+        let user = try? AuthenticationManager.shared.getAuthenticatedUser()
+        self.isUserLoggedIn = user != nil ? true : false
+    }
+    
+    func findLoggedUser() -> Bool {
+        let user = try? AuthenticationManager.shared.getAuthenticatedUser()
+        return user != nil ? true : false
+    }
     
     func cleanUp() {
         email = ""
@@ -39,44 +49,59 @@ final class AuthViewModel: ObservableObject {
     
     func signIn() async throws {
         guard !email.isEmpty, !password.isEmpty else {
-            print("Email or Password is empty.")
+            let result = "Email or password is empty."
+            showAlert = true
+            alertMessage = result
             return
         }
         guard email.contains("@") else {
-            print("Email is not correct.")
+            let result = "Email is not correct."
+            showAlert = true
+            alertMessage = result
             return
         }
         guard password.count >= 8 else {
-            print("Password mismatch.")
+            let result = "Password mismatch."
+            showAlert = true
+            alertMessage = result
             return
         }
         
         try await AuthenticationManager.shared.signIn(email: email, password: password)
-        showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
+        isUserLoggedIn = findLoggedUser()
         cleanUp()
         focusOn(screen: "Relpairs")
+        return 
     }
     
     func signUp() async throws {
         guard !email.isEmpty, !password.isEmpty else {
-            print("Email or Password is empty.")
+            let result = "Email or password is empty."
+            showAlert = true
+            alertMessage = result
             return
         }
         guard password == passwordConfirmation else {
-            print("Password mismatch.")
+            let result = "Password mismatch."
+            showAlert = true
+            alertMessage = result
             return
         }
         guard email.contains("@") else {
-            print("Email is not correct.")
+            let result = "Email is not correct."
+            showAlert = true
+            alertMessage = result
             return
         }
         guard password.count >= 8 else {
-            print("Password mismatch.")
+            let result = "Password mismatch."
+            showAlert = true
+            alertMessage = result
             return
         }
         
         try await AuthenticationManager.shared.createUser(email: email, password: password)
-        showAuthView = !AuthenticationManager.shared.isHaveLoggedUser()
+        isUserLoggedIn = findLoggedUser()
         cleanUp()
         focusOn(screen: "Relpairs")
     }

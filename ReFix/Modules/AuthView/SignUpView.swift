@@ -8,22 +8,30 @@
 import SwiftUI
 
 struct SignUpView: View {
+    enum Field: Hashable {
+        case email
+        case password
+        case comfirmPassword
+        case companyName
+    }
     
     @EnvironmentObject var viewModel: AuthViewModel
-    @FocusState var isFocused: Bool
+    @FocusState var isFocused: Field?
     
     var body: some View {
         VStack {
             appLogo
             signUpTextFieldForm
+                .onTapGesture {}
             alreadyHaveAnAccountButton
             Spacer()
             registerButton
+                .alert(viewModel.alertMessage, isPresented: $viewModel.showAlert, actions: {Button("Зрозуміло", role: .cancel){}})
             Spacer()
         }
         .background(Color(.secondarySystemBackground))
         .onTapGesture {
-            isFocused = false
+            isFocused = .none
         }
     }
 }
@@ -41,16 +49,19 @@ extension SignUpView {
         TextField(placeholder, text: text)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.never)
-            .focused($isFocused)
             .modifier(ClearButtonViewModifier(text: text))
     }
     
     var signUpTextFieldForm: some View {
             Form {
                 customTextField(placeholder: "Пошта", text: $viewModel.email)
+                    .focused($isFocused, equals: .email)
                 customTextField(placeholder: "Пароль", text: $viewModel.password)
+                    .focused($isFocused, equals: .password)
                 customTextField(placeholder: "Підтвердіть пароль", text: $viewModel.passwordConfirmation)
+                    .focused($isFocused, equals: .comfirmPassword)
                 customTextField(placeholder: "Ім'я компанії", text: $viewModel.companyName)
+                    .focused($isFocused, equals: .companyName)
                     .textInputAutocapitalization(.sentences)
             }
             .scrollDisabled(true)

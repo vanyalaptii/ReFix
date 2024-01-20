@@ -8,24 +8,31 @@
 import SwiftUI
 
 struct SignInView: View {
+    enum Field: Hashable {
+        case email
+        case password
+    }
     
-//    @Binding var showAuthView: Bool
-    @EnvironmentObject var viewModel: AuthViewModel
-    @FocusState var isFocused: Bool
+    @EnvironmentObject private var viewModel: AuthViewModel
+    @FocusState private var isFocused: Field?
     
     var body: some View {
-        VStack {
-            appLogo
-            signInTextFieldForm
-            forgotPasswordButton
-            unregisteredButton
-            Spacer()
-            signInButton
-            Spacer()
-        }
-        .background(Color(.secondarySystemBackground))
-        .onTapGesture {
-            isFocused = false
+        ZStack {
+            VStack {
+                appLogo
+                signInTextFieldForm
+                    .onTapGesture {}
+                forgotPasswordButton
+                unregisteredButton
+                Spacer()
+                signInButton
+                    .alert(viewModel.alertMessage, isPresented: $viewModel.showAlert, actions: {Button("Зрозуміло", role: .cancel){}})
+                Spacer()
+            }
+            .background(Color(.secondarySystemBackground))
+            .onTapGesture {
+                isFocused = .none
+            }
         }
     }
 }
@@ -46,11 +53,14 @@ extension SignInView {
                     placeholder: "Пошта",
                     text: $viewModel.email
                 )
+                .focused($isFocused, equals: .email)
+                
                 customTextFieldWithIcon(
                     icon: "lock.fill",
                     placeholder: "Пароль",
                     text: $viewModel.password
                 )
+                .focused($isFocused, equals: .password)
             }
             .scrollDisabled(true)
             .scrollContentBackground(.hidden)
@@ -73,7 +83,6 @@ extension SignInView {
         TextField(placeholder, text: text)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.never)
-            .focused($isFocused)
             .modifier(ClearButtonViewModifier(text: text))
     }
     

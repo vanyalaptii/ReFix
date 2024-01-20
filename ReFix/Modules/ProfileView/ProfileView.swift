@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject private var viewModel = ProfileViewModel()
-    @Binding var showAuthView: Bool
+    @Binding var userIsLoggedIn: Bool
     
     var body: some View {
         NavigationStack {
@@ -38,7 +38,7 @@ struct ProfileView: View {
                                 Task {
                                     do {
                                         try await viewModel.deleteAccount()
-                                        showAuthView = true
+                                        userIsLoggedIn = false
                                     } catch {
                                         print(error)
                                     }
@@ -62,7 +62,7 @@ struct ProfileView: View {
                             Task {
                                 do {
                                     try viewModel.signOut()
-                                    showAuthView = true
+                                    userIsLoggedIn = false
                                 } catch {
                                     print(error)
                                 }
@@ -88,5 +88,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(showAuthView: .constant(false))
+    ProfileView(userIsLoggedIn: .constant(true))
 }

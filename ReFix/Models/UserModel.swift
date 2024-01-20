@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-struct AuthDataResultModel {
+struct UserModel {
     let uid: String
     let email: String?
     

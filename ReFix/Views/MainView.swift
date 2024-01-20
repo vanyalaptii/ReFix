@@ -35,7 +35,7 @@ struct MainView: View {
                     .toolbarBackground(.visible, for: .tabBar)
                     .tag("Conteragent")
                 
-                ProfileView(showAuthView: $authViewModel.showAuthView)
+                ProfileView(userIsLoggedIn: $authViewModel.isUserLoggedIn)
                     .tabItem {
                         Label("Профіль", systemImage: "person.crop.rectangle")
                     }
@@ -44,7 +44,7 @@ struct MainView: View {
                     .tag("ProfileView")
             }
         }
-        .fullScreenCover(isPresented: $authViewModel.showAuthView) {
+        .fullScreenCover(isPresented: $authViewModel.isUserLoggedIn.inversed) {
             AuthView()
                 .environmentObject(authViewModel)
         }
