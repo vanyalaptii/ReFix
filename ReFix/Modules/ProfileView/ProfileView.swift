@@ -38,7 +38,9 @@ struct ProfileView: View {
                                 Task {
                                     do {
                                         try await viewModel.deleteAccount()
-                                        userIsLoggedIn = false
+                                        withAnimation {
+                                            userIsLoggedIn = false
+                                        }
                                     } catch {
                                         print(error)
                                     }

@@ -18,7 +18,7 @@ final class AuthViewModel: ObservableObject {
     
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
-    @Published var isUserLoggedIn: Bool
+    @Published var isUserLoggedIn: Bool = false
     @Published var tabSelection: String = "first"
     @Published var authState: AuthState = .signIn
     @Published var email: String = ""
@@ -27,8 +27,9 @@ final class AuthViewModel: ObservableObject {
     @Published var companyName: String = ""
     
     init() {
-        let user = try? AuthenticationManager.shared.getAuthenticatedUser()
-        self.isUserLoggedIn = user != nil ? true : false
+        withAnimation {
+            self.isUserLoggedIn = findLoggedUser()
+        }
     }
     
     func findLoggedUser() -> Bool {
@@ -68,8 +69,10 @@ final class AuthViewModel: ObservableObject {
         }
         
         try await AuthenticationManager.shared.signIn(email: email, password: password)
-        isUserLoggedIn = findLoggedUser()
-        cleanUp()
+        withAnimation {
+            isUserLoggedIn = findLoggedUser()
+            cleanUp()
+        }
         focusOn(screen: "Relpairs")
         return 
     }
@@ -101,8 +104,10 @@ final class AuthViewModel: ObservableObject {
         }
         
         try await AuthenticationManager.shared.createUser(email: email, password: password)
-        isUserLoggedIn = findLoggedUser()
-        cleanUp()
+        withAnimation {
+            isUserLoggedIn = findLoggedUser()
+            cleanUp()
+        }
         focusOn(screen: "Relpairs")
     }
     

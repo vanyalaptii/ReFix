@@ -30,6 +30,7 @@ final class AuthenticationManager {
     func signIn(email: String, password: String) async throws -> UserModel {
         let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
         return UserModel(user: authDataResult.user)
+        //TODO: Show alerts when user is not found
     }
     
     func resetPassword(email: String) async throws {

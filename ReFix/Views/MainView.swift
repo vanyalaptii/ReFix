@@ -12,41 +12,51 @@ struct MainView: View {
     @StateObject var authViewModel = AuthViewModel()
     
     var body: some View {
-        ZStack {
-            TabView(selection: $authViewModel.tabSelection) {
-                RelpairsListView()
-                    .tabItem {
-                        Label("Ремонти", systemImage: "list.dash.header.rectangle")
-                    }
-                    .toolbarBackground(.visible, for: .tabBar)
-                    .tag("Relpairs")
-                
-                ClientsListView()
-                    .tabItem {
-                        Label("Клієнти", systemImage: "person.2")
-                    }
-                    .toolbarBackground(.visible, for: .tabBar)
-                    .tag("Clients")
-                
-                ConteragentListView()
-                    .tabItem {
-                        Label("Контрагенти", systemImage: "wrench.and.screwdriver.fill")
-                    }
-                    .toolbarBackground(.visible, for: .tabBar)
-                    .tag("Conteragent")
-                
-                ProfileView(userIsLoggedIn: $authViewModel.isUserLoggedIn)
-                    .tabItem {
-                        Label("Профіль", systemImage: "person.crop.rectangle")
-                    }
-                    .toolbarBackground(.visible, for: .tabBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
-                    .tag("ProfileView")
-            }
+        switch authViewModel.isUserLoggedIn {
+        case true:
+            mainView
+        default:
+            authView
         }
-        .fullScreenCover(isPresented: $authViewModel.isUserLoggedIn.inversed) {
-            AuthView()
-                .environmentObject(authViewModel)
+    }
+}
+
+extension MainView {
+    var authView: some View {
+        AuthView()
+            .environmentObject(authViewModel)
+    }
+    
+    var mainView: some View {
+        TabView(selection: $authViewModel.tabSelection) {
+            RelpairsListView()
+                .tabItem {
+                    Label("Ремонти", systemImage: "list.dash.header.rectangle")
+                }
+                .toolbarBackground(.visible, for: .tabBar)
+                .tag("Relpairs")
+            
+            ClientsListView()
+                .tabItem {
+                    Label("Клієнти", systemImage: "person.2")
+                }
+                .toolbarBackground(.visible, for: .tabBar)
+                .tag("Clients")
+            
+            ConteragentListView()
+                .tabItem {
+                    Label("Контрагенти", systemImage: "wrench.and.screwdriver.fill")
+                }
+                .toolbarBackground(.visible, for: .tabBar)
+                .tag("Conteragent")
+            
+            ProfileView(userIsLoggedIn: $authViewModel.isUserLoggedIn)
+                .tabItem {
+                    Label("Профіль", systemImage: "person.crop.rectangle")
+                }
+                .toolbarBackground(.visible, for: .tabBar)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .tag("ProfileView")
         }
     }
 }
