@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct AuthView: View {
-    
-    @StateObject private var viewModel = AuthViewModel()
-    @FocusState var isFocused: Bool
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationStack {
@@ -24,9 +22,6 @@ struct AuthView: View {
                 }
             }
             .ignoresSafeArea()
-        }
-        .onTapGesture {
-            isFocused = false
         }
     }
 }
