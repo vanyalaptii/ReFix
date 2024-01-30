@@ -34,7 +34,7 @@ extension MainView {
                     Label("Ремонти", systemImage: "list.dash.header.rectangle")
                 }
                 .toolbarBackground(.visible, for: .tabBar)
-                .tag("Relpairs")
+                .tag("Repairs")
             
             ClientsListView()
                 .tabItem {

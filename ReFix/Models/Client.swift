@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Client {
+class Client: Codable {
     let id: Int
     var name: String
     var phoneNumber: String
@@ -18,5 +18,13 @@ class Client {
         self.name = name
         self.phoneNumber = phoneNumber
         self.email = email
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.phoneNumber = try container.decode(String.self, forKey: .phoneNumber)
+        self.email = try container.decode(String.self, forKey: .email)
     }
 }

@@ -22,19 +22,19 @@ final class AuthenticationManager {
     
     @discardableResult
     func createUser(email: String, password: String) async throws -> UserModel {
-        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        let authDataResult = try await Auth.auth().createUser(withEmail: email.lowercased(), password: password)
         return UserModel(user: authDataResult.user)
     }
     
     @discardableResult
     func signIn(email: String, password: String) async throws -> UserModel {
-        let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
+        let authDataResult = try await Auth.auth().signIn(withEmail: email.lowercased(), password: password)
         return UserModel(user: authDataResult.user)
         //TODO: Show alerts when user is not found
     }
     
     func resetPassword(email: String) async throws {
-        try await Auth.auth().sendPasswordReset(withEmail: email)
+        try await Auth.auth().sendPasswordReset(withEmail: email.lowercased())
     }
     
     //TODO: provide this functionality in future
@@ -52,7 +52,7 @@ final class AuthenticationManager {
             throw URLError(.badServerResponse)
         }
         
-        try await user.sendEmailVerification(beforeUpdatingEmail: email)
+        try await user.sendEmailVerification(beforeUpdatingEmail: email.lowercased())
     }
     
     func signOut() throws{

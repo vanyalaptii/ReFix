@@ -84,7 +84,10 @@ struct ProfileView: View {
                 }
                 .scrollContentBackground(.hidden)
             }
-            .navigationBarTitle("Налаштування")
+            .navigationBarTitle(viewModel.user?.companyName ?? "Налаштування")
+        }
+        .task {
+            try? await viewModel.loadCurrentUser()
         }
     }
 }

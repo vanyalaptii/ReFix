@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RelpairsListView: View {
-
-    @State var repairsArray = Repair.repairsMocked
+    
+    @StateObject var viewModel = RepairsListViewModel()
     
     @State private var searchText = ""
     @State private var searchIsActive = false
@@ -45,24 +45,37 @@ struct RelpairsListView: View {
             .navigationTitle("Ремонти")
             .toolbar {
                 Button("+") {
-                    print("+ tapped")
+                    viewModel.addNewRepairIsPresented = true
                 }
                 .padding()
                 .font(.largeTitle)
+                .sheet(isPresented: $viewModel.addNewRepairIsPresented) {
+                    AddNewRepairView()
+                        .environmentObject(viewModel)
+                        .presentationDetents([.large, .fraction(0.08)], selection: .constant(.large))
+                        .presentationBackgroundInteraction(.enabled)
+                        .presentationCompactAdaptation(.sheet)
+                }
             }
             .searchable(text: $searchText, isPresented: $searchIsActive, prompt: "Пошук")
+        }
+        .onAppear {
+            Task {
+                try await viewModel.loadCurrentUser()
+                await viewModel.loadRepairsArray()
+            }
         }
     }
     
     var searchResults: [Repair] {
         if searchText.isEmpty {
-            return repairsArray
+            return viewModel.repairListArray
         } else {
-            return repairsArray.filter { $0.model.contains(searchText) }
-                 + repairsArray.filter { $0.brand.contains(searchText) }
-                 + repairsArray.filter { $0.id.description.contains(searchText) }
-                 + repairsArray.filter { $0.client.name.contains(searchText) }
-                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
+            return viewModel.repairListArray.filter { $0.model.contains(searchText) }
+                 + viewModel.repairListArray.filter { $0.brand.contains(searchText) }
+                 + viewModel.repairListArray.filter { $0.id.description.contains(searchText) }
+//                 + repairsArray.filter { $0.client.name.contains(searchText) }
+//                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
         }
     }
 }
