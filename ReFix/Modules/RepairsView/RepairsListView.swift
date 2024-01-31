@@ -13,6 +13,7 @@ struct RelpairsListView: View {
     
     @State private var searchText = ""
     @State private var searchIsActive = false
+    @State var repairsListArray: [Repair] = []
 
     var body: some View {
         
@@ -21,7 +22,7 @@ struct RelpairsListView: View {
                 ZStack {
                     HStack {
                         VStack(alignment: .listRowSeparatorLeading, content: {
-                            Text(item.model)
+                            Text("\(item.brand) \(item.model)")
                                 .font(.system(size: 17))
                                 .padding(1)
                             Text("#\(item.id)")
@@ -50,7 +51,7 @@ struct RelpairsListView: View {
                 .padding()
                 .font(.largeTitle)
                 .sheet(isPresented: $viewModel.addNewRepairIsPresented) {
-                    AddNewRepairView()
+                    AddNewRepairView(futureRepairId: viewModel.futureRepairId)
                         .environmentObject(viewModel)
                         .presentationDetents([.large, .fraction(0.08)], selection: .constant(.large))
                         .presentationBackgroundInteraction(.enabled)
@@ -58,22 +59,41 @@ struct RelpairsListView: View {
                 }
             }
             .searchable(text: $searchText, isPresented: $searchIsActive, prompt: "Пошук")
+            //TODO: Make search suggestions
         }
         .onAppear {
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Відмінити"
             Task {
                 try await viewModel.loadCurrentUser()
-                await viewModel.loadRepairsArray()
+                do {
+                    try await viewModel.loadRepairsArray()
+                } catch {
+                    print(error.localizedDescription)
+                }
+                updateList()
             }
         }
     }
     
     var searchResults: [Repair] {
         if searchText.isEmpty {
-            return viewModel.repairListArray
+            return viewModel.repairListArray.sorted { $0.id > $1.id }
         } else {
-            return viewModel.repairListArray.filter { $0.model.contains(searchText) }
-                 + viewModel.repairListArray.filter { $0.brand.contains(searchText) }
-                 + viewModel.repairListArray.filter { $0.id.description.contains(searchText) }
+            return viewModel.repairListArray
+                .filter { $0.model.contains(searchText) }
+                .sorted { $0.id > $1.id }
+            + viewModel.repairListArray
+                .filter { $0.brand.contains(searchText) }
+                .sorted { $0.id > $1.id }
+            + viewModel.repairListArray
+                .filter { $0.id.description.contains(searchText) }
+                .sorted { $0.id > $1.id }
+            + viewModel.repairListArray
+                .filter { $0.imei.description.contains(searchText) }
+                .sorted { $0.id > $1.id }
+            + viewModel.repairListArray
+                .filter { $0.serialNumber.description.contains(searchText) }
+                .sorted { $0.id > $1.id }
 //                 + repairsArray.filter { $0.client.name.contains(searchText) }
 //                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
         }
@@ -83,13 +103,19 @@ struct RelpairsListView: View {
 extension RelpairsListView {
     var details: some View {
         HStack {
-            Text("Detail")
+            Text("Деталі")
                 .font(.system(size: 17))
                 .font(.system(.title3))
                 .foregroundStyle(.secondary)
             
             Image(systemName: "chevron.right")
                 .opacity(0.5)
+        }
+    }
+    
+    func updateList() {
+        withAnimation {
+            self.repairsListArray = viewModel.repairListArray
         }
     }
 }

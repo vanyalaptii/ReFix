@@ -23,6 +23,7 @@ struct AddNewRepairView: View {
     
     @EnvironmentObject private var viewModel: RepairsListViewModel
     @FocusState var isFocused: Field?
+    var futureRepairId: Int
     
     var body: some View {
         NavigationStack {
@@ -54,49 +55,42 @@ struct AddNewRepairView: View {
 extension AddNewRepairView {
     func newRepairTextFieldForm() -> some View {
         VStack {
-            Form {
-                customTextFieldWithText(placeholder: "Марка", text: $viewModel.brand)
-                    .focused($isFocused, equals: .brand)
-                customTextFieldWithText(placeholder: "Модель", text: $viewModel.model)
-                    .focused($isFocused, equals: .model)
-                customTextFieldWithText(placeholder: "S/N", text: $viewModel.serialNumber)
-                    .focused($isFocused, equals: .serialNumber)
-                customTextFieldWithText(placeholder: "IMEI", text: $viewModel.imei)
-                    .focused($isFocused, equals: .imei)
-                customTextFieldWithText(placeholder: "Несправність", text: $viewModel.malfunction)
-                    .focused($isFocused, equals: .malfunction)
-                customTextFieldWithText(placeholder: "Опис", text: $viewModel.description)
-                    .focused($isFocused, equals: .description)
-                customTextFieldWithText(placeholder: "Здав", text: $viewModel.client)
-                    .focused($isFocused, equals: .client)
-                customTextFieldWithText(placeholder: "Номер телефону", text: $viewModel.phoneNumber)
-                    .focused($isFocused, equals: .phoneNumber)
-                customTextFieldWithText(placeholder: "Майстер", text: $viewModel.conteragent)
-                    .focused($isFocused, equals: .conteragent)
-                customTextFieldWithText(placeholder: "Прийняв", text: $viewModel.employee)
-                    .focused($isFocused, equals: .employee)
+            Form{
+                Section("# \(futureRepairId)"){
+                    customTextFieldWithText(placeholder: "Марка", text: $viewModel.brand)
+                        .focused($isFocused, equals: .brand)
+                    customTextFieldWithText(placeholder: "Модель", text: $viewModel.model)
+                        .focused($isFocused, equals: .model)
+                    customTextFieldWithText(placeholder: "S/N", text: $viewModel.serialNumber)
+                        .focused($isFocused, equals: .serialNumber)
+                    customTextFieldWithText(placeholder: "IMEI", text: $viewModel.imei)
+                        .focused($isFocused, equals: .imei)
+                    customTextFieldWithText(placeholder: "Несправність", text: $viewModel.malfunction)
+                        .focused($isFocused, equals: .malfunction)
+                    customTextFieldWithText(placeholder: "Опис", text: $viewModel.description)
+                        .focused($isFocused, equals: .description)
+                    customTextFieldWithText(placeholder: "Здав", text: $viewModel.client)
+                        .focused($isFocused, equals: .client)
+                    customTextFieldWithText(placeholder: "Номер телефону", text: $viewModel.phoneNumber)
+                        .focused($isFocused, equals: .phoneNumber)
+                    customTextFieldWithText(placeholder: "Майстер", text: $viewModel.conteragent)
+                        .focused($isFocused, equals: .conteragent)
+                    customTextFieldWithText(placeholder: "Прийняв", text: $viewModel.employee)
+                        .focused($isFocused, equals: .employee)
+                    HStack{
+                        Spacer()
+                        Button("Очистити") {
+                            viewModel.cleanFields()
+                        }
+                        Spacer()
+                    }
+                }
             }
-            .frame(minHeight: 480)
+            .frame(minHeight: 525)
             .scrollContentBackground(.hidden)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.never)
-            
-            HStack{
-                Button("TestButton") {
-                    Task {
-                        //MARK: Button for tests
-                        await RepairsManager.shared.downloadAllRepairs(user: viewModel.user!)
-                    }
-                }
-                .padding()
-                .padding(.trailing, 15)
-                Spacer()
-                Button("Очистити") {
-                    viewModel.cleanFields()
-                }
-                .padding()
-                .padding(.trailing, 15)
-            }
+            .scrollDisabled(true)
         }
     }
     
@@ -118,7 +112,11 @@ extension AddNewRepairView {
         Button("Додати"){
             Task {
                 await viewModel.addNewRepair()
-                await viewModel.loadRepairsArray()
+                do {
+                    try await viewModel.loadRepairsArray()
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
         }
         .padding(50)
@@ -127,6 +125,6 @@ extension AddNewRepairView {
 }
 
 #Preview {
-    AddNewRepairView()
+    AddNewRepairView(futureRepairId: 1)
         .environmentObject(RepairsListViewModel())
 }

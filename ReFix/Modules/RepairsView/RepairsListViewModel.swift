@@ -25,6 +25,9 @@ final class RepairsListViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
     @Published var conteragent: String = ""
     @Published var employee: String = ""
+    var futureRepairId: Int {
+        repairListArray.count + 1
+    }
     
     func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
@@ -47,7 +50,7 @@ final class RepairsListViewModel: ObservableObject {
     func addNewRepair() async {
         guard let user = self.user else { return }
         
-        var newReapairId: Int = await RepairsManager.shared.repairsCounter(user: user) + 1
+        let newReapairId: Int = await RepairsManager.shared.repairsCounter(user: user) + 1
         
         let repair = Repair(id: newReapairId,
                             brand: self.brand,
@@ -71,11 +74,15 @@ final class RepairsListViewModel: ObservableObject {
         cleanFields()
     }
     
-    func loadRepairsArray() async {
+    func loadRepairsArray() async throws {
         guard let user = self.user else {
-            print("Failed todownload. No registered user!")
+            print("Failed to download. No registered user!")
             return
         }
-        self.repairListArray = await RepairsManager.shared.downloadAllRepairs(user: user)
+        do {
+            self.repairListArray = try await RepairsManager.shared.downloadAllRepairs(user: user)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

@@ -44,18 +44,11 @@ final class RepairsManager {
         return result
     }
     
-    func downloadAllRepairs(user: DBUser) async -> [Repair]{
+    func downloadAllRepairs(user: DBUser) async throws -> [Repair] {
         var result: [Repair] = []
-        let snapshot = try await userCollection.document(user.userId).collection("repairs").getDocuments { snapshot, _ in
-//            let documents = snapshot!.documents
-//            try! documents.forEach { document in
-//                let repair: Repair = try document.decoded()
-//                result.append(repair)
-//            }
-            
-            result = try! snapshot!.decoded()
-            result.forEach({ print($0) })
-        }
+        let snapshot = try await userCollection.document(user.userId).collection("repairs").getDocuments()
+        
+        result = try snapshot.decoded()
         return result
     }
 }
