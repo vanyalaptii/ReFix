@@ -14,6 +14,7 @@ final class RepairsListViewModel: ObservableObject {
     @Published private(set) var repairListArray: [Repair] = []
     
     @Published var addNewRepairIsPresented: Bool = false
+    @Published var repairDatailIsPresented: Bool = false
     
     @Published var brand: String = ""
     @Published var model: String = ""
@@ -25,6 +26,7 @@ final class RepairsListViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
     @Published var conteragent: String = ""
     @Published var employee: String = ""
+    
     var futureRepairId: Int {
         repairListArray.count + 1
     }

@@ -3,4 +3,70 @@
    uuid = "07D2B126-5987-4B50-B8BC-603F0D5889AC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09ED357D-61F7-4477-893D-9579C6C73320"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReFix/Modules/RepairsView/RepairDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "updateRepair()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB99A2A9-895C-4056-B4DB-05C06D7DBB5C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReFix/Modules/RepairsView/RepairDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init(repair:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BB99A2A9-895C-4056-B4DB-05C06D7DBB5C - 60f8fe601b3ad585"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReFix.RepairDetailViewModel.__allocating_init(repair: ReFix.Repair, isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;) -&gt; ReFix.RepairDetailViewModel"
+                  moduleName = "ReFix"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vanalaptii/Documents/Projects/ReFix/ReFix/Modules/RepairsView/RepairDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "BB99A2A9-895C-4056-B4DB-05C06D7DBB5C - d351e5897a27b49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReFix.RepairDetailViewModel.init(repair: ReFix.Repair, isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;) -&gt; ReFix.RepairDetailViewModel"
+                  moduleName = "ReFix"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vanalaptii/Documents/Projects/ReFix/ReFix/Modules/RepairsView/RepairDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "1528">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
