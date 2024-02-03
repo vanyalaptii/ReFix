@@ -9,16 +9,15 @@ import SwiftUI
 
 struct RelpairsListView: View {
     
-    @StateObject private var viewModel = RepairsListViewModel()
+    @ObservedObject private var viewModel = RepairsListViewModel()
     
     @State private var searchText = ""
     @State private var searchIsActive = false
-    @State var repairsListArray: [Repair] = []
     
     var body: some View {
         NavigationView {
-            List(searchResults) { item in
-                listRepairRow(repair: item)
+            List($viewModel.repairListArray.sorted{$0.id > $1.id}) { $item in
+                listRepairRow(repair: $item)
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
@@ -31,15 +30,6 @@ struct RelpairsListView: View {
         }
         .onAppear {
             UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Відмінити"
-            Task {
-                do {
-                    try await viewModel.loadCurrentUser()
-                    try await viewModel.loadRepairsArray()
-                } catch {
-                    print(error.localizedDescription)
-                }
-                self.updateList()
-            }
         }
     }
     
@@ -70,11 +60,11 @@ struct RelpairsListView: View {
 
 extension RelpairsListView {
     
-    func listRepairRow(repair: Repair) -> some View {
+    func listRepairRow(repair: Binding<Repair>) -> some View {
         ZStack {
             HStack {
                 VStack(alignment: .listRowSeparatorLeading, content: {
-                    Text("\(repair.brand) \(repair.model)")
+                    Text("\(repair.wrappedValue.brand) \(repair.wrappedValue.model)")
                         .font(.system(size: 17))
                         .padding(1)
                     Text("#\(repair.id)")
@@ -108,12 +98,6 @@ extension RelpairsListView {
                 .presentationDetents([.large, .fraction(0.08)], selection: .constant(.large))
                 .presentationBackgroundInteraction(.enabled)
                 .presentationCompactAdaptation(.sheet)
-        }
-    }
-    
-    func updateList() {
-        withAnimation {
-            self.repairsListArray = viewModel.repairListArray
         }
     }
 }

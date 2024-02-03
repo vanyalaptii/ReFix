@@ -7,11 +7,15 @@
 
 import Foundation
 
+//protocol CHildViewDelegate: AnyObject {
+//    func updateRepairArray() async throws
+//}
+
 @MainActor
 final class RepairsListViewModel: ObservableObject {
     
     @Published private(set) var user: DBUser? = nil
-    @Published private(set) var repairListArray: [Repair] = []
+    @Published var repairListArray: [Repair] = []
     
     @Published var addNewRepairIsPresented: Bool = false
     @Published var repairDatailIsPresented: Bool = false
@@ -26,6 +30,13 @@ final class RepairsListViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
     @Published var conteragent: String = ""
     @Published var employee: String = ""
+    
+    init() {
+        Task {
+            try await loadCurrentUser()
+            try await loadRepairsArray()
+        }
+    }
     
     var futureRepairId: Int {
         repairListArray.count + 1

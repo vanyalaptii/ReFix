@@ -44,10 +44,13 @@ struct RepairDetailView: View {
         }
         .navigationTitle("Ремонт #\(viewModel.id)")
         .navigationBarBackButtonHidden(false)
-        .onDisappear() {
-            Task {
-                try await viewModel.updateRepair()
+        .toolbar{
+            ToolbarItem {
+                saveButton
             }
+        }
+        .onDisappear() {
+            viewModel.cleanUp()
         }
     }
 }
@@ -61,9 +64,17 @@ extension RepairDetailView {
         }
         .padding(7)
     }
+    
+    var saveButton: some View {
+        Button("Зберегти"){
+            Task {
+                try await viewModel.updateRepair()
+            }
+        }
+    }
 }
 
-#Preview {
-    RepairDetailView()
-        .environmentObject(RepairDetailViewModel(repair: Repair.repairsMocked.first!))
-}
+//#Preview {
+//    RepairDetailView()
+//        .environmentObject(RepairDetailViewModel(repair: Repair.repairsMocked.first!))
+//}
