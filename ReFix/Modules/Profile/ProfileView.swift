@@ -86,9 +86,6 @@ struct ProfileView: View {
             }
             .navigationBarTitle(viewModel.user?.companyName ?? "Налаштування")
         }
-        .task {
-            try? await viewModel.loadCurrentUser()
-        }
     }
 }
 

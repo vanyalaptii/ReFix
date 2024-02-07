@@ -11,14 +11,13 @@ struct RelpairsListView: View {
     
     @StateObject var viewModel = RepairsListViewModel()
     
-    @State private var searchText = ""
-    @State private var searchIsActive = false
-    @State var repairsListArray: [Repair] = []
+//    @State private var searchText = ""
+//    @State private var searchIsActive = false
 
     var body: some View {
         
         NavigationStack{
-            List(searchResults) { item in
+            List(viewModel.searchResults) { item in
                 ZStack {
                     HStack {
                         VStack(alignment: .listRowSeparatorLeading, content: {
@@ -46,56 +45,23 @@ struct RelpairsListView: View {
             .navigationTitle("Ремонти")
             .toolbar {
                 Button("+") {
-                    viewModel.addNewRepairIsPresented = true
+                    viewModel.isAddNewRepairPresented = true
                 }
                 .padding()
                 .font(.largeTitle)
-                .sheet(isPresented: $viewModel.addNewRepairIsPresented) {
+                .sheet(isPresented: $viewModel.isAddNewRepairPresented) {
                     AddNewRepairView(futureRepairId: viewModel.futureRepairId)
-                        .environmentObject(viewModel)
+                        .environmentObject(AddNewRepairViewModel(addNewRepairState: $viewModel.isAddNewRepairPresented, repairListArray: $viewModel.repairListArray))
                         .presentationDetents([.large, .fraction(0.08)], selection: .constant(.large))
                         .presentationBackgroundInteraction(.enabled)
                         .presentationCompactAdaptation(.sheet)
                 }
             }
-            .searchable(text: $searchText, isPresented: $searchIsActive, prompt: "Пошук")
+            .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive, prompt: "Пошук")
             //TODO: Make search suggestions
         }
         .onAppear {
             UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Відмінити"
-            Task {
-                try await viewModel.loadCurrentUser()
-                do {
-                    try await viewModel.loadRepairsArray()
-                } catch {
-                    print(error.localizedDescription)
-                }
-                updateList()
-            }
-        }
-    }
-    
-    var searchResults: [Repair] {
-        if searchText.isEmpty {
-            return viewModel.repairListArray.sorted { $0.id > $1.id }
-        } else {
-            return viewModel.repairListArray
-                .filter { $0.model.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + viewModel.repairListArray
-                .filter { $0.brand.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + viewModel.repairListArray
-                .filter { $0.id.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + viewModel.repairListArray
-                .filter { $0.imei.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + viewModel.repairListArray
-                .filter { $0.serialNumber.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-//                 + repairsArray.filter { $0.client.name.contains(searchText) }
-//                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
         }
     }
 }
@@ -110,12 +76,6 @@ extension RelpairsListView {
             
             Image(systemName: "chevron.right")
                 .opacity(0.5)
-        }
-    }
-    
-    func updateList() {
-        withAnimation {
-            self.repairsListArray = viewModel.repairListArray
         }
     }
 }
