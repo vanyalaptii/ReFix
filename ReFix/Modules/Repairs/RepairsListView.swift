@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct RelpairsListView: View {
-
-    @State var repairsArray = Repair.repairsMocked
     
-    @State private var searchText = ""
-    @State private var searchIsActive = false
+    @StateObject var viewModel = RepairsListViewModel()
+    
+//    @State private var searchText = ""
+//    @State private var searchIsActive = false
 
     var body: some View {
         
         NavigationStack{
-            List(searchResults) { item in
+            List(viewModel.searchResults) { item in
                 ZStack {
                     HStack {
                         VStack(alignment: .listRowSeparatorLeading, content: {
-                            Text(item.model)
+                            Text("\(item.brand) \(item.model)")
                                 .font(.system(size: 17))
                                 .padding(1)
                             Text("#\(item.id)")
@@ -45,24 +45,23 @@ struct RelpairsListView: View {
             .navigationTitle("Ремонти")
             .toolbar {
                 Button("+") {
-                    print("+ tapped")
+                    viewModel.isAddNewRepairPresented = true
                 }
                 .padding()
                 .font(.largeTitle)
+                .sheet(isPresented: $viewModel.isAddNewRepairPresented) {
+                    AddNewRepairView(futureRepairId: viewModel.futureRepairId)
+                        .environmentObject(AddNewRepairViewModel(addNewRepairState: $viewModel.isAddNewRepairPresented, repairListArray: $viewModel.repairListArray))
+                        .presentationDetents([.large, .fraction(0.08)], selection: .constant(.large))
+                        .presentationBackgroundInteraction(.enabled)
+                        .presentationCompactAdaptation(.sheet)
+                }
             }
-            .searchable(text: $searchText, isPresented: $searchIsActive, prompt: "Пошук")
+            .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive, prompt: "Пошук")
+            //TODO: Make search suggestions
         }
-    }
-    
-    var searchResults: [Repair] {
-        if searchText.isEmpty {
-            return repairsArray
-        } else {
-            return repairsArray.filter { $0.model.contains(searchText) }
-                 + repairsArray.filter { $0.brand.contains(searchText) }
-                 + repairsArray.filter { $0.id.description.contains(searchText) }
-                 + repairsArray.filter { $0.client.name.contains(searchText) }
-                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
+        .onAppear {
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Відмінити"
         }
     }
 }
@@ -70,7 +69,7 @@ struct RelpairsListView: View {
 extension RelpairsListView {
     var details: some View {
         HStack {
-            Text("Detail")
+            Text("Деталі")
                 .font(.system(size: 17))
                 .font(.system(.title3))
                 .foregroundStyle(.secondary)

@@ -26,7 +26,10 @@ struct SignUpView: View {
             alreadyHaveAnAccountButton
             Spacer()
             registerButton
-                .alert(viewModel.alertMessage, isPresented: $viewModel.showAlert, actions: {Button("Зрозуміло", role: .cancel){}})
+                .alert(viewModel.alertMessage,
+                       isPresented: $viewModel.showAlert,
+                       actions: {Button("Зрозуміло", role: .cancel){}}
+                )
             Spacer()
         }
         .background(Color(.secondarySystemBackground))

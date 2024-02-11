@@ -67,13 +67,17 @@ final class AuthViewModel: ObservableObject {
             alertMessage = result
             return
         }
-        
-        try await AuthenticationManager.shared.signIn(email: email, password: password)
+        do {
+            try await AuthenticationManager.shared.signIn(email: email, password: password)
+        } catch {
+            showAlert = true
+            alertMessage = error.localizedDescription
+        }
         withAnimation {
             isUserLoggedIn = findLoggedUser()
             cleanUp()
         }
-        focusOn(screen: "Relpairs")
+        focusOn(screen: "Repairs")
         return 
     }
     
@@ -102,13 +106,29 @@ final class AuthViewModel: ObservableObject {
             alertMessage = result
             return
         }
+        guard !companyName.isEmpty else {
+            let result = "Company name is empty."
+            showAlert = true
+            alertMessage = result
+            return
+        }
         
-        try await AuthenticationManager.shared.createUser(email: email, password: password)
+        do {
+            try await AuthenticationManager.shared.createUser(email: email, password: password)
+        } catch {
+            showAlert = true
+            alertMessage = error.localizedDescription
+        }
+        var authResult = try AuthenticationManager.shared.getAuthenticatedUser()
+        authResult.companyName = companyName
+        let user = DBUser(user: authResult)
+        try UserManager.shared.createNewUser(user: user)
+        //try RepairsManager.shared.createNewRepair(user: user, repair: Repair.repairsMocked[1]) //!
         withAnimation {
             isUserLoggedIn = findLoggedUser()
             cleanUp()
         }
-        focusOn(screen: "Relpairs")
+        focusOn(screen: "Repairs")
     }
     
     func resetPassword(email: String) async throws {
