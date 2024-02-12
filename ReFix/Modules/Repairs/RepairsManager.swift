@@ -13,8 +13,6 @@ final class RepairsManager {
     
     static var shared = RepairsManager()
     
-    private init() {}
-    
     private let userCollection = Firestore.firestore().collection("users")
     
     private let encoder: Firestore.Encoder = {

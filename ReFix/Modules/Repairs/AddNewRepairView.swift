@@ -21,7 +21,7 @@ struct AddNewRepairView: View {
         case employee
     }
     
-    @EnvironmentObject private var viewModel: RepairsListViewModel
+    @EnvironmentObject private var viewModel: AddNewRepairViewModel
     @FocusState var isFocused: Field?
     var futureRepairId: Int
     
@@ -112,11 +112,6 @@ extension AddNewRepairView {
         Button("Додати"){
             Task {
                 await viewModel.addNewRepair()
-                do {
-                    try await viewModel.loadRepairsArray()
-                } catch {
-                    print(error.localizedDescription)
-                }
             }
         }
         .padding(50)

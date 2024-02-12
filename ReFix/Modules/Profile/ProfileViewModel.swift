@@ -12,6 +12,12 @@ final class ProfileViewModel: ObservableObject {
     
     @Published private(set) var user: DBUser? = nil
     
+    init() {
+        Task {
+            try await loadCurrentUser()
+        }
+    }
+    
     func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
         self.user = try await UserManager.shared.getUser(userId: userModel.uid)

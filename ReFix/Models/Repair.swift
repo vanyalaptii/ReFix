@@ -62,8 +62,6 @@ class Repair: Identifiable, Codable {
         try container.encode(repairStatus, forKey: .repairStatus)
     }
     
-    
-    
     init(
         id: Int,
         brand: String,
