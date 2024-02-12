@@ -18,26 +18,31 @@ final class RepairsListViewModel: ObservableObject {
     @Published var isAddNewRepairPresented: Bool = false
     
     var searchResults: [Repair] {
-        if searchText.isEmpty {
-            return repairListArray.sorted { $0.id > $1.id }
-        } else {
-            return repairListArray
-                .filter { $0.model.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.brand.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.id.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.imei.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.serialNumber.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-//                 + repairsArray.filter { $0.client.name.contains(searchText) }
-//                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
+        get {
+            if searchText.isEmpty {
+                return repairListArray.sorted { $0.id > $1.id }
+            } else {
+                return repairListArray
+                    .filter { $0.model.contains(searchText) }
+                    .sorted { $0.id > $1.id }
+                + repairListArray
+                    .filter { $0.brand.contains(searchText) }
+                    .sorted { $0.id > $1.id }
+                + repairListArray
+                    .filter { $0.id.description.contains(searchText) }
+                    .sorted { $0.id > $1.id }
+                + repairListArray
+                    .filter { $0.imei.description.contains(searchText) }
+                    .sorted { $0.id > $1.id }
+                + repairListArray
+                    .filter { $0.serialNumber.description.contains(searchText) }
+                    .sorted { $0.id > $1.id }
+                //TODO: make possible to search by user name and phone number
+            }
+        }
+        
+        set {
+            repairListArray = newValue
         }
     }
     
