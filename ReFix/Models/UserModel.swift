@@ -9,10 +9,16 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-struct UserModel {
+struct UserModel: Codable {
     let uid: String
     let email: String?
     var companyName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case uid
+        case companyName = "company_name"
+        case email
+    }
     
     init(user: User) {
         self.uid = user.uid

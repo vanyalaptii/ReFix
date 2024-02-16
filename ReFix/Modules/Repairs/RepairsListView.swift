@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RelpairsListView: View {
+struct RepairsListView: View {
     
     @ObservedObject private var viewModel = RepairsListViewModel()
     
@@ -31,7 +31,7 @@ struct RelpairsListView: View {
     }
 }
 
-extension RelpairsListView {
+extension RepairsListView {
     
     func listRepairRow(repair: Binding<Repair>) -> some View {
         ZStack {
@@ -76,7 +76,7 @@ extension RelpairsListView {
 }
 
 #Preview {
-    RelpairsListView()
+    RepairsListView()
 }
 
 

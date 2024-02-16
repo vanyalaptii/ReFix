@@ -39,7 +39,7 @@ struct AddNewRepairView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        viewModel.addNewRepairIsPresented = false
+                        viewModel.isAddNewRepairPresented = false
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundStyle(Color.secondary)
@@ -118,8 +118,8 @@ extension AddNewRepairView {
         .buttonStyle(.borderedProminent)
     }
 }
-
-#Preview {
-    AddNewRepairView(futureRepairId: 1)
-        .environmentObject(RepairsListViewModel())
-}
+//
+//#Preview {
+//    AddNewRepairView(futureRepairId: 1)
+//        .environmentObject(AddNewRepairViewModel(addNewRepairState: state, repairListArray: $repairListArray))
+//}

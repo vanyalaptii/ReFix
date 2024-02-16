@@ -10,7 +10,6 @@ import SwiftUI
 
 @MainActor
 final class RepairDetailViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     
     @Published public var repair: Binding<Repair>
@@ -57,7 +56,7 @@ final class RepairDetailViewModel: ObservableObject {
     
     func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = try await UserManager.shared.getUser(userId: userModel.uid)
+        self.user = DBUser(user: userModel)
     }
     
     func updateRepair() async throws {

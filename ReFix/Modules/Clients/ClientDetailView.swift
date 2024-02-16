@@ -1,13 +1,13 @@
 //
-//  RepairDetailView.swift
+//  ClientDetailView.swift
 //  ReFix
 //
-//  Created by Ivan Laptii on 31.01.2024.
+//  Created by Ivan Laptii on 16.02.2024.
 //
 
 import SwiftUI
 
-struct RepairDetailView: View {
+struct ClientDetailView: View {
     enum Field: Hashable {
         case brand
         case model
@@ -21,26 +21,21 @@ struct RepairDetailView: View {
         case employee
     }
     
-    @EnvironmentObject private var viewModel: RepairDetailViewModel
+    @EnvironmentObject private var viewModel: ClientDetailViewModel
     @FocusState var isFocused: Field?
     
     var body: some View {
         VStack {
             List {
-                customTextField(placeholder: "Марка:",text: $viewModel.brand)
-                customTextField(placeholder: "Модель:",text: $viewModel.model)
-                customTextField(placeholder: "S/N:",text: $viewModel.serialNumber)
-                customTextField(placeholder: "IMEI:",text: $viewModel.imei)
-                customTextField(placeholder: "Несправність:",text: $viewModel.malfunction)
-                customTextField(placeholder: "Опис:",text: $viewModel.description)
-                customTextField(placeholder: "Здав:",text: $viewModel.client)
-                customTextField(placeholder: "Прийняв:",text: $viewModel.employee)
-                customTextField(placeholder: "Статус:",text: $viewModel.repairStatus)
+                customTextField(placeholder: "Ім'я:",text: $viewModel.name)
+                customTextField(placeholder: "Фамілія:",text: $viewModel.surname)
+                customTextField(placeholder: "Номер телефону:",text: $viewModel.phoneNumber)
+                customTextField(placeholder: "Пошта:",text: $viewModel.email)
             }
             .listStyle(.grouped)
             .scrollContentBackground(.hidden)
         }
-        .navigationTitle("Ремонт #\(viewModel.id)")
+        .navigationTitle("\(viewModel.surname) \(viewModel.name)")
         .navigationBarBackButtonHidden(false)
         .toolbar{
             ToolbarItem {
@@ -53,7 +48,7 @@ struct RepairDetailView: View {
     }
 }
 
-extension RepairDetailView {
+extension ClientDetailView {
     func customTextField(placeholder: String, text: Binding<String>) -> some View {
         HStack {
             Text(placeholder)

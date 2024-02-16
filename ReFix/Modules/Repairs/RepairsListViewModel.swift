@@ -23,10 +23,10 @@ final class RepairsListViewModel: ObservableObject {
                 return repairListArray.sorted { $0.id > $1.id }
             } else {
                 return repairListArray
-                    .filter { $0.model.contains(searchText) }
+                    .filter { $0.model.lowercased().contains(searchText.lowercased()) }
                     .sorted { $0.id > $1.id }
                 + repairListArray
-                    .filter { $0.brand.contains(searchText) }
+                    .filter { $0.brand.lowercased().contains(searchText.lowercased()) }
                     .sorted { $0.id > $1.id }
                 + repairListArray
                     .filter { $0.id.description.contains(searchText) }
@@ -59,7 +59,7 @@ final class RepairsListViewModel: ObservableObject {
     
     func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = try await UserManager.shared.getUser(userId: userModel.uid)
+        self.user = DBUser(user: userModel)
     }
     
     func loadRepairsArray() async throws {
