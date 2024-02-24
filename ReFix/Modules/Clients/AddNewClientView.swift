@@ -52,7 +52,7 @@ extension AddNewClientView {
             Form{
                 customTextFieldWithText(placeholder: "Ім'я", text: $viewModel.name)
                     .focused($isFocused, equals: .name)
-                customTextFieldWithText(placeholder: "Фамілія", text: $viewModel.surname)
+                customTextFieldWithText(placeholder: "Прізвище", text: $viewModel.surname)
                     .focused($isFocused, equals: .surname)
                 customTextFieldWithText(placeholder: "Номер телефону", text: $viewModel.phoneNumber)
                     .focused($isFocused, equals: .phoneNumber)

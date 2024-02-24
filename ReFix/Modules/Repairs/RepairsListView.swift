@@ -41,7 +41,7 @@ struct RepairsListView: View {
     }
 }
 
-extension RelpairsListView {
+extension RepairsListView {
     private func listRepairRow(repair: Binding<Repair>) -> some View {
         ZStack {
             HStack {
