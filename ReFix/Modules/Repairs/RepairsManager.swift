@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class RepairsManager {
-    static let shared = RepairsManager()
+    static var shared = RepairsManager()
     
     private let userCollection = Firestore.firestore().collection("users")
     private let repairsCollection = "repairs"
