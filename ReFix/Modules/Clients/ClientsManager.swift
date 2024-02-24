@@ -10,7 +10,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class ClientsManager {
-    
     static let shared = ClientsManager()
     
     private let userCollection = Firestore.firestore().collection("users")

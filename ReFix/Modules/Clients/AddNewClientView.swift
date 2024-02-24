@@ -8,15 +8,8 @@
 import SwiftUI
 
 struct AddNewClientView: View {
-    enum Field: Hashable {
-        case name
-        case surname
-        case phoneNumber
-        case email
-    }
-    
     @EnvironmentObject private var viewModel: AddNewClientViewModel
-    @FocusState var isFocused: Field?
+    @FocusState private var isFocused: Field?
     var futureClientId: Int
     
     var body: some View {
@@ -47,7 +40,14 @@ struct AddNewClientView: View {
 }
 
 extension AddNewClientView {
-    func newClientTextFieldForm() -> some View {
+    private enum Field: Hashable {
+        case name
+        case surname
+        case phoneNumber
+        case email
+    }
+    
+    private func newClientTextFieldForm() -> some View {
         VStack {
             Form{
                 customTextFieldWithText(placeholder: "Ім'я", text: $viewModel.name)
@@ -74,21 +74,21 @@ extension AddNewClientView {
         }
     }
     
-    func customTextField(placeholder: String, text: Binding<String>) -> some View {
+    private func customTextField(placeholder: String, text: Binding<String>) -> some View {
         TextField(placeholder, text: text)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.never)
             .modifier(ClearButtonViewModifier(text: text))
     }
     
-    func customTextFieldWithText(placeholder: String, text: Binding<String>) -> some View {
+    private func customTextFieldWithText(placeholder: String, text: Binding<String>) -> some View {
         HStack(alignment: .center) {
             Text(placeholder)
             customTextField(placeholder: "", text: text)
         }
     }
     
-    func saveNewClientButton() -> some View {
+    private func saveNewClientButton() -> some View {
         Button("Додати"){
             Task {
                 await viewModel.addNewClient()
@@ -98,7 +98,3 @@ extension AddNewClientView {
         .buttonStyle(.borderedProminent)
     }
 }
-
-//#Preview {
-//    AddNewClientView(futureClientId: 1)
-//}

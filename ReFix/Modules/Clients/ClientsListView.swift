@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ClientsListView: View {
-    
     @ObservedObject private var viewModel = ClientsListViewModel()
     
     var body: some View {
@@ -31,8 +30,7 @@ struct ClientsListView: View {
 }
 
 extension ClientsListView {
-    
-    func listClientRow(client: Binding<Client>) -> some View {
+    private func listClientRow(client: Binding<Client>) -> some View {
         HStack {
             Text("\(client.wrappedValue.surname) \(client.wrappedValue.name)")
             NavigationLink(destination: {
@@ -44,7 +42,7 @@ extension ClientsListView {
         }
     }
     
-    var addButton: some View {
+    private var addButton: some View {
         Button("+") {
             viewModel.isAddNewClientPresented = true
         }

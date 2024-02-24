@@ -9,7 +9,6 @@ import Foundation
 
 @MainActor
 final class ClientsListViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     @Published internal var clientsListArray: [Client] = []
     
@@ -57,13 +56,15 @@ final class ClientsListViewModel: ObservableObject {
             }
         }
     }
-    
-    func loadCurrentUser() async throws {
+}
+
+extension ClientsListViewModel {
+    private func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
         self.user = DBUser(user: userModel)
     }
     
-    func loadClientsArray() async throws {
+    private func loadClientsArray() async throws {
         guard let user = self.user else {
             print("Failed to download. No registered user!")
             return

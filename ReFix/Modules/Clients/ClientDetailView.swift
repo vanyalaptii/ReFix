@@ -8,27 +8,14 @@
 import SwiftUI
 
 struct ClientDetailView: View {
-    enum Field: Hashable {
-        case brand
-        case model
-        case serialNumber
-        case imei
-        case malfunction
-        case description
-        case client
-        case phoneNumber
-        case conteragent
-        case employee
-    }
-    
     @EnvironmentObject private var viewModel: ClientDetailViewModel
-    @FocusState var isFocused: Field?
+    @FocusState private var isFocused: Field?
     
     var body: some View {
         VStack {
             List {
                 customTextField(placeholder: "Ім'я:",text: $viewModel.name)
-                customTextField(placeholder: "Фамілія:",text: $viewModel.surname)
+                customTextField(placeholder: "Прізвище:",text: $viewModel.surname)
                 customTextField(placeholder: "Номер телефону:",text: $viewModel.phoneNumber)
                 customTextField(placeholder: "Пошта:",text: $viewModel.email)
             }
@@ -43,13 +30,26 @@ struct ClientDetailView: View {
             }
         }
         .onDisappear() {
-            viewModel.cleanUp()
+            viewModel.cleanAllTextFields()
         }
     }
 }
 
 extension ClientDetailView {
-    func customTextField(placeholder: String, text: Binding<String>) -> some View {
+    private enum Field: Hashable {
+        case brand
+        case model
+        case serialNumber
+        case imei
+        case malfunction
+        case description
+        case client
+        case phoneNumber
+        case conteragent
+        case employee
+    }
+    
+    private func customTextField(placeholder: String, text: Binding<String>) -> some View {
         HStack {
             Text(placeholder)
             TextField("", text: text)
@@ -58,7 +58,7 @@ extension ClientDetailView {
         .padding(7)
     }
     
-    var saveButton: some View {
+    private var saveButton: some View {
         Button("Зберегти"){
             Task {
                 try await viewModel.updateRepair()
@@ -66,8 +66,3 @@ extension ClientDetailView {
         }
     }
 }
-
-//#Preview {
-//    RepairDetailView()
-//        .environmentObject(RepairDetailViewModel(repair: Repair.repairsMocked.first!))
-//}

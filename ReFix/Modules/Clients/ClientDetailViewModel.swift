@@ -14,7 +14,7 @@ final class ClientDetailViewModel: ObservableObject {
     
     @Published public var client: Binding<Client>
     
-    @Published var id: Int
+    @Published private var id: Int
     @Published var name: String = ""
     @Published var surname: String = ""
     @Published var phoneNumber: String = ""
@@ -22,7 +22,6 @@ final class ClientDetailViewModel: ObservableObject {
     
     init(client: Binding<Client>) {
         self.client = client
-        
         self.id = client.wrappedValue.id
         self.name = client.wrappedValue.name
         self.surname = client.wrappedValue.surname
@@ -30,17 +29,12 @@ final class ClientDetailViewModel: ObservableObject {
         self.email = client.wrappedValue.email
     }
     
-    func cleanUp() {
+    func cleanAllTextFields() {
         self.id = client.wrappedValue.id
         self.name = client.wrappedValue.name
         self.surname = client.wrappedValue.surname
         self.phoneNumber = client.wrappedValue.phoneNumber
         self.email = client.wrappedValue.email
-    }
-    
-    func loadCurrentUser() async throws {
-        let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = DBUser(user: userModel)
     }
     
     func updateRepair() async throws {
@@ -58,5 +52,12 @@ final class ClientDetailViewModel: ObservableObject {
         client.wrappedValue = updatedClient
         
         ClientsManager.shared.updateClient(user: user, updatedClient: updatedClient)
+    }
+}
+
+extension ClientDetailViewModel {
+    private func loadCurrentUser() async throws {
+        let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
+        self.user = DBUser(user: userModel)
     }
 }

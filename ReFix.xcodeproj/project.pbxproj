@@ -28,7 +28,7 @@
 		C395D11C2B477CEB00B6F3D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C395D11B2B477CEB00B6F3D4 /* FirebaseAuth */; };
 		C395D11E2B477CEB00B6F3D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C395D11D2B477CEB00B6F3D4 /* FirebaseFirestore */; };
 		C3A617932B3A0EFB0023A746 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617922B3A0EFB0023A746 /* Client.swift */; };
-		C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617942B3A0FA80023A746 /* ConterAgent.swift */; };
+		C3A617952B3A0FA80023A746 /* Counterparty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617942B3A0FA80023A746 /* Counterparty.swift */; };
 		C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617962B3A17320023A746 /* RepairsListView.swift */; };
 		C3B5EB782B5F29B5003524FA /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C3B5EB772B5F29B5003524FA /* FirebaseFirestoreSwift */; };
 		C3B5EB7A2B5F3198003524FA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5EB792B5F3198003524FA /* UserManager.swift */; };
@@ -94,7 +94,7 @@
 		C395D1162B3FD93300B6F3D4 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		C395D1182B3FD99100B6F3D4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C3A617922B3A0EFB0023A746 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		C3A617942B3A0FA80023A746 /* ConterAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConterAgent.swift; sourceTree = "<group>"; };
+		C3A617942B3A0FA80023A746 /* Counterparty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counterparty.swift; sourceTree = "<group>"; };
 		C3A617962B3A17320023A746 /* RepairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsListView.swift; sourceTree = "<group>"; };
 		C3B5EB792B5F3198003524FA /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		C3B5EB7B2B61CA74003524FA /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 			children = (
 				C3F87D0A2B36B6A2009C3EBC /* Repair.swift */,
 				C3A617922B3A0EFB0023A746 /* Client.swift */,
-				C3A617942B3A0FA80023A746 /* ConterAgent.swift */,
+				C3A617942B3A0FA80023A746 /* Counterparty.swift */,
 				C35B38192B570D9400D983D8 /* UserModel.swift */,
 				C3B5EB7B2B61CA74003524FA /* DBUser.swift */,
 			);
@@ -486,7 +486,7 @@
 				C3B5EB872B68A4B5003524FA /* QueryDocumentSnapshotModifier.swift in Sources */,
 				C346B22E2B6AE0E900D94DC5 /* RepairDetailViewModel.swift in Sources */,
 				C3E96B912B5BF2BA00953757 /* BindingValueModifier.swift in Sources */,
-				C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */,
+				C3A617952B3A0FA80023A746 /* Counterparty.swift in Sources */,
 				C346B22C2B6ADB2200D94DC5 /* RepairDetailView.swift in Sources */,
 				C35B38102B549C0100D983D8 /* ProfileViewModel.swift in Sources */,
 				C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */,

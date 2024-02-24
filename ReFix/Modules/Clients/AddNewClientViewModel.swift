@@ -10,7 +10,6 @@ import SwiftUI
 
 @MainActor
 final class AddNewClientViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     @Published var clientDatailIsPresented: Bool = false
     @Binding private(set) var clientListArray: [Client]

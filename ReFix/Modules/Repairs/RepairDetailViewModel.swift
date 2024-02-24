@@ -26,9 +26,7 @@ final class RepairDetailViewModel: ObservableObject {
     @Published var repairStatus: String = ""
     
     init(repair: Binding<Repair>) {
-        
         self.repair = repair
-        
         self.id = repair.wrappedValue.id
         self.brand = repair.wrappedValue.brand
         self.model = repair.wrappedValue.model
@@ -41,7 +39,7 @@ final class RepairDetailViewModel: ObservableObject {
         self.repairStatus = repair.wrappedValue.repairStatus
     }
     
-    func cleanUp() {
+    func discardUnsavedValues() {
         self.id = repair.wrappedValue.id
         self.brand = repair.wrappedValue.brand
         self.model = repair.wrappedValue.model

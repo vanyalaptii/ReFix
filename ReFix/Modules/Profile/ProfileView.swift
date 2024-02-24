@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
     @StateObject private var viewModel = ProfileViewModel()
     @Binding var userIsLoggedIn: Bool
     
@@ -27,7 +26,7 @@ struct ProfileView: View {
 }
 
 extension ProfileView {
-    var settingsSection: some View {
+    private var settingsSection: some View {
         Section("Налаштування") {
                 Button("Скинути пароль"){
                     Task {
@@ -58,7 +57,8 @@ extension ProfileView {
                 .buttonStyle(.borderless)
         }
     }
-    var logOutButton: some View {
+    
+    private var logOutButton: some View {
         HStack {
             Spacer()
             

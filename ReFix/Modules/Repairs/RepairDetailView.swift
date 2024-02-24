@@ -8,21 +8,8 @@
 import SwiftUI
 
 struct RepairDetailView: View {
-    enum Field: Hashable {
-        case brand
-        case model
-        case serialNumber
-        case imei
-        case malfunction
-        case description
-        case client
-        case phoneNumber
-        case conteragent
-        case employee
-    }
-    
     @EnvironmentObject private var viewModel: RepairDetailViewModel
-    @FocusState var isFocused: Field?
+    @FocusState private var isFocused: Field?
     
     var body: some View {
         VStack {
@@ -48,13 +35,26 @@ struct RepairDetailView: View {
             }
         }
         .onDisappear() {
-            viewModel.cleanUp()
+            viewModel.discardUnsavedValues()
         }
     }
 }
 
 extension RepairDetailView {
-    func customTextField(placeholder: String, text: Binding<String>) -> some View {
+    private enum Field: Hashable {
+        case brand
+        case model
+        case serialNumber
+        case imei
+        case malfunction
+        case description
+        case client
+        case phoneNumber
+        case conteragent
+        case employee
+    }
+    
+    private func customTextField(placeholder: String, text: Binding<String>) -> some View {
         HStack {
             Text(placeholder)
             TextField("", text: text)
@@ -63,7 +63,7 @@ extension RepairDetailView {
         .padding(7)
     }
     
-    var saveButton: some View {
+    private var saveButton: some View {
         Button("Зберегти"){
             Task {
                 try await viewModel.updateRepair()
@@ -71,8 +71,3 @@ extension RepairDetailView {
         }
     }
 }
-
-//#Preview {
-//    RepairDetailView()
-//        .environmentObject(RepairDetailViewModel(repair: Repair.repairsMocked.first!))
-//}

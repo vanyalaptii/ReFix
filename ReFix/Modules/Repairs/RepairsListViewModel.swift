@@ -9,7 +9,6 @@ import Foundation
 
 @MainActor
 final class RepairsListViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     @Published internal var repairListArray: [Repair] = []
     
@@ -56,13 +55,15 @@ final class RepairsListViewModel: ObservableObject {
     var futureRepairId: Int {
         repairListArray.count + 1
     }
-    
-    func loadCurrentUser() async throws {
+}
+
+extension RepairsListViewModel {
+    private func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
         self.user = DBUser(user: userModel)
     }
     
-    func loadRepairsArray() async throws {
+    private func loadRepairsArray() async throws {
         guard let user = self.user else {
             print("Failed to download. No registered user!")
             return

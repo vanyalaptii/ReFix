@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RepairsListView: View {
-    
     @ObservedObject private var viewModel = RepairsListViewModel()
     
     var body: some View {
@@ -78,5 +77,3 @@ extension RepairsListView {
 #Preview {
     RepairsListView()
 }
-
-

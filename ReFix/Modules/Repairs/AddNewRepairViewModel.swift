@@ -10,7 +10,6 @@ import SwiftUI
 
 @MainActor
 final class AddNewRepairViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     @Published var repairDatailIsPresented: Bool = false
     @Binding private(set) var repairListArray: [Repair]
@@ -69,10 +68,10 @@ final class AddNewRepairViewModel: ObservableObject {
         }
         repairListArray.append(newRepair)
         isAddNewRepairPresented.toggle()
-        cleanFields()
+        cleanAllTextFields()
     }
     
-    func cleanFields() {
+    func cleanAllTextFields() {
         self.brand = ""
         self.model = ""
         self.serialNumber = ""

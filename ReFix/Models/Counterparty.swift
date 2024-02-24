@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ConterAgent {
+class Counterparty {
     let id: Int
     var name: String
     var surname: String
