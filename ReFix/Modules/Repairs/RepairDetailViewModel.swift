@@ -10,7 +10,6 @@ import SwiftUI
 
 @MainActor
 final class RepairDetailViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     
     @Published public var repair: Binding<Repair>
@@ -42,7 +41,7 @@ final class RepairDetailViewModel: ObservableObject {
         self.repairStatus = repair.wrappedValue.repairStatus
     }
     
-    func cleanUp() {
+    func discardUnsavedValues() {
         self.id = repair.wrappedValue.id
         self.brand = repair.wrappedValue.brand
         self.model = repair.wrappedValue.model

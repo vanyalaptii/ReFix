@@ -241,9 +241,9 @@
 				C3A617962B3A17320023A746 /* RepairsListView.swift */,
 				C3B5EB802B630E19003524FA /* RepairsListViewModel.swift */,
 				C3B5EB822B63A0B8003524FA /* AddNewRepairView.swift */,
+				C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */,
 				C346B22B2B6ADB2200D94DC5 /* RepairDetailView.swift */,
 				C346B22D2B6AE0E900D94DC5 /* RepairDetailViewModel.swift */,
-				C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */,
 				C3B5EB7E2B630D8B003524FA /* RepairsManager.swift */,
 			);
 			path = Repairs;

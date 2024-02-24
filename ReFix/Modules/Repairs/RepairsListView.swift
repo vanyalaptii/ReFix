@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RelpairsListView: View {
-    
     @ObservedObject private var viewModel = RepairsListViewModel()
     
     var body: some View {
@@ -22,7 +21,18 @@ struct RelpairsListView: View {
             .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive, prompt: "Пошук")
             //TODO: Make search suggestions
             .toolbar {
-                addButton
+                Button("+") {
+                    viewModel.isAddNewRepairPresented = true
+                }
+                .padding()
+                .font(.largeTitle)
+                .sheet(isPresented: $viewModel.isAddNewRepairPresented) {
+                    AddNewRepairView(futureRepairId: viewModel.futureRepairId)
+                        .environmentObject(AddNewRepairViewModel(addNewRepairState: $viewModel.isAddNewRepairPresented, repairListArray: $viewModel.repairListArray))
+                        .presentationDetents([.large, .fraction(0.08)], selection: .constant(.large))
+                        .presentationBackgroundInteraction(.enabled)
+                        .presentationCompactAdaptation(.sheet)
+                }
             }
         }
         .onAppear {
@@ -32,8 +42,7 @@ struct RelpairsListView: View {
 }
 
 extension RelpairsListView {
-    
-    func listRepairRow(repair: Binding<Repair>) -> some View {
+    private func listRepairRow(repair: Binding<Repair>) -> some View {
         ZStack {
             HStack {
                 VStack(alignment: .listRowSeparatorLeading, content: {
@@ -57,21 +66,6 @@ extension RelpairsListView {
                 .stroke(Color(uiColor: .tertiaryLabel), lineWidth: 1)
         }
         .listRowSeparator(.hidden)
-    }
-    
-    var addButton: some View {
-        Button("+") {
-            viewModel.isAddNewRepairPresented = true
-        }
-        .padding()
-        .font(.largeTitle)
-        .sheet(isPresented: $viewModel.isAddNewRepairPresented) {
-            AddNewRepairView(futureRepairId: viewModel.futureRepairId)
-                .environmentObject(AddNewRepairViewModel(addNewRepairState: $viewModel.isAddNewRepairPresented, repairListArray: $viewModel.repairListArray))
-                .presentationDetents([.large, .fraction(0.08)], selection: .constant(.large))
-                .presentationBackgroundInteraction(.enabled)
-                .presentationCompactAdaptation(.sheet)
-        }
     }
 }
 

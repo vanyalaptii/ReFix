@@ -10,7 +10,6 @@ import SwiftUI
 
 @MainActor
 final class AddNewRepairViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     @Published var repairDatailIsPresented: Bool = false
     @Binding private(set) var repairListArray: [Repair]
