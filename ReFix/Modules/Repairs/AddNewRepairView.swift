@@ -8,21 +8,8 @@
 import SwiftUI
 
 struct AddNewRepairView: View {
-    enum Field: Hashable {
-        case brand
-        case model
-        case serialNumber
-        case imei
-        case malfunction
-        case description
-        case client
-        case phoneNumber
-        case conteragent
-        case employee
-    }
-    
     @EnvironmentObject private var viewModel: AddNewRepairViewModel
-    @FocusState var isFocused: Field?
+    @FocusState private var isFocused: Field?
     var futureRepairId: Int
     
     var body: some View {
@@ -39,7 +26,7 @@ struct AddNewRepairView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        viewModel.addNewRepairIsPresented = false
+                        viewModel.isAddNewRepairPresented = false
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundStyle(Color.secondary)
@@ -53,7 +40,20 @@ struct AddNewRepairView: View {
 }
 
 extension AddNewRepairView {
-    func newRepairTextFieldForm() -> some View {
+    private enum Field: Hashable {
+        case brand
+        case model
+        case serialNumber
+        case imei
+        case malfunction
+        case description
+        case client
+        case phoneNumber
+        case conteragent
+        case employee
+    }
+    
+    private func newRepairTextFieldForm() -> some View {
         VStack {
             Form{
                 Section("# \(futureRepairId)"){
@@ -80,7 +80,7 @@ extension AddNewRepairView {
                     HStack{
                         Spacer()
                         Button("Очистити") {
-                            viewModel.cleanFields()
+                            viewModel.cleanAllTextFields()
                         }
                         Spacer()
                     }
@@ -94,21 +94,21 @@ extension AddNewRepairView {
         }
     }
     
-    func customTextField(placeholder: String, text: Binding<String>) -> some View {
+    private func customTextField(placeholder: String, text: Binding<String>) -> some View {
         TextField(placeholder, text: text)
             .autocorrectionDisabled(true)
             .textInputAutocapitalization(.never)
             .modifier(ClearButtonViewModifier(text: text))
     }
     
-    func customTextFieldWithText(placeholder: String, text: Binding<String>) -> some View {
+    private func customTextFieldWithText(placeholder: String, text: Binding<String>) -> some View {
         HStack(alignment: .center) {
             Text(placeholder)
             customTextField(placeholder: "", text: text)
         }
     }
     
-    func saveNewRepairButton() -> some View {
+    private func saveNewRepairButton() -> some View {
         Button("Додати"){
             Task {
                 await viewModel.addNewRepair()
@@ -117,9 +117,4 @@ extension AddNewRepairView {
         .padding(50)
         .buttonStyle(.borderedProminent)
     }
-}
-
-#Preview {
-    AddNewRepairView(futureRepairId: 1)
-        .environmentObject(RepairsListViewModel())
 }

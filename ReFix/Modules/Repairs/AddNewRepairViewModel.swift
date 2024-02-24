@@ -10,10 +10,10 @@ import SwiftUI
 
 @MainActor
 final class AddNewRepairViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
+    @Published var repairDatailIsPresented: Bool = false
     @Binding private(set) var repairListArray: [Repair]
-    @Binding var addNewRepairIsPresented: Bool
+    @Binding var isAddNewRepairPresented: Bool
     
     @Published var brand: String = ""
     @Published var model: String = ""
@@ -27,16 +27,20 @@ final class AddNewRepairViewModel: ObservableObject {
     @Published var employee: String = ""
     
     init(addNewRepairState: Binding<Bool>, repairListArray: Binding<[Repair]>){
-        self._addNewRepairIsPresented = addNewRepairState
+        self._isAddNewRepairPresented = addNewRepairState
         self._repairListArray = repairListArray
         Task {
             try await loadCurrentUser()
         }
     }
     
+    var futureRepairId: Int {
+        repairListArray.count + 1
+    }
+    
     func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = try await UserManager.shared.getUser(userId: userModel.uid)
+        self.user = DBUser(user: userModel)
     }
     
     func addNewRepair() async {
@@ -63,11 +67,11 @@ final class AddNewRepairViewModel: ObservableObject {
             return
         }
         repairListArray.append(newRepair)
-        addNewRepairIsPresented.toggle()
-        cleanFields()
+        isAddNewRepairPresented.toggle()
+        cleanAllTextFields()
     }
     
-    func cleanFields() {
+    func cleanAllTextFields() {
         self.brand = ""
         self.model = ""
         self.serialNumber = ""

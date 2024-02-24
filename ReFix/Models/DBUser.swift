@@ -13,6 +13,13 @@ struct DBUser: Codable {
     let email: String?
     let dateCreated: Date?
     
+    enum CodingKeys: String, CodingKey {
+        case userId
+        case companyName
+        case email
+        case dateCreated
+    }
+    
     init(user: UserModel) {
         self.userId = user.uid
         self.companyName = user.companyName

@@ -16,9 +16,9 @@ class Repair: Identifiable, Codable {
     var imei: String
     var malfunction: String
     var description: String
-    let client: String
+    var client: String
     // TODO: Create Employee model
-    let employee: String
+    var employee: String
     var repairStatus: String
     
     enum CodingKeys: String, CodingKey {

@@ -29,7 +29,7 @@ extension MainView {
     
     var mainView: some View {
         TabView(selection: $authViewModel.tabSelection) {
-            RelpairsListView()
+            RepairsListView()
                 .tabItem {
                     Label("Ремонти", systemImage: "list.dash.header.rectangle")
                 }

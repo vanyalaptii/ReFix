@@ -15,16 +15,20 @@
 		C3243E962B2F913200071C8F /* ReFixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E952B2F913200071C8F /* ReFixUITests.swift */; };
 		C3243E982B2F913200071C8F /* ReFixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */; };
 		C3243EA82B2FB6F700071C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */; };
+		C346B22C2B6ADB2200D94DC5 /* RepairDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346B22B2B6ADB2200D94DC5 /* RepairDetailView.swift */; };
+		C346B22E2B6AE0E900D94DC5 /* RepairDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346B22D2B6AE0E900D94DC5 /* RepairDetailViewModel.swift */; };
 		C346B2302B72F33F00D94DC5 /* AddNewRepairViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */; };
 		C35B380E2B54264E00D983D8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B380D2B54264E00D983D8 /* AuthenticationManager.swift */; };
 		C35B38102B549C0100D983D8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B380F2B549C0100D983D8 /* ProfileViewModel.swift */; };
 		C35B381A2B570D9400D983D8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B38192B570D9400D983D8 /* UserModel.swift */; };
+		C38472562B7EEB680048A96B /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38472552B7EEB680048A96B /* ClientDetailView.swift */; };
+		C38472582B7EEB860048A96B /* ClientDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38472572B7EEB860048A96B /* ClientDetailViewModel.swift */; };
 		C395D1172B3FD93300B6F3D4 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395D1162B3FD93300B6F3D4 /* AuthView.swift */; };
 		C395D1192B3FD99100B6F3D4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395D1182B3FD99100B6F3D4 /* ProfileView.swift */; };
 		C395D11C2B477CEB00B6F3D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C395D11B2B477CEB00B6F3D4 /* FirebaseAuth */; };
 		C395D11E2B477CEB00B6F3D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C395D11D2B477CEB00B6F3D4 /* FirebaseFirestore */; };
 		C3A617932B3A0EFB0023A746 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617922B3A0EFB0023A746 /* Client.swift */; };
-		C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617942B3A0FA80023A746 /* ConterAgent.swift */; };
+		C3A617952B3A0FA80023A746 /* Counterparty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617942B3A0FA80023A746 /* Counterparty.swift */; };
 		C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A617962B3A17320023A746 /* RepairsListView.swift */; };
 		C3B5EB782B5F29B5003524FA /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C3B5EB772B5F29B5003524FA /* FirebaseFirestoreSwift */; };
 		C3B5EB7A2B5F3198003524FA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5EB792B5F3198003524FA /* UserManager.swift */; };
@@ -39,6 +43,10 @@
 		C3C9046D2B4F57CD000B4251 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9046C2B4F57CD000B4251 /* SignInView.swift */; };
 		C3C9046F2B4F57F8000B4251 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9046E2B4F57F8000B4251 /* SignUpView.swift */; };
 		C3C904712B4F5832000B4251 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C904702B4F5832000B4251 /* AuthViewModel.swift */; };
+		C3E555102B7AE76900BF45A6 /* ClientsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E5550F2B7AE76900BF45A6 /* ClientsListViewModel.swift */; };
+		C3E555122B7AE7E500BF45A6 /* ClientsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E555112B7AE7E500BF45A6 /* ClientsManager.swift */; };
+		C3E555142B7AF3CB00BF45A6 /* AddNewClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E555132B7AF3CB00BF45A6 /* AddNewClientView.swift */; };
+		C3E555162B7AF3E500BF45A6 /* AddNewClientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E555152B7AF3E500BF45A6 /* AddNewClientViewModel.swift */; };
 		C3E96B912B5BF2BA00953757 /* BindingValueModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E96B902B5BF2BA00953757 /* BindingValueModifier.swift */; };
 		C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0A2B36B6A2009C3EBC /* Repair.swift */; };
 		C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */; };
@@ -75,14 +83,18 @@
 		C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReFixUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C3243EA62B2FB40800071C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C346B22B2B6ADB2200D94DC5 /* RepairDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairDetailView.swift; sourceTree = "<group>"; };
+		C346B22D2B6AE0E900D94DC5 /* RepairDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairDetailViewModel.swift; sourceTree = "<group>"; };
 		C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRepairViewModel.swift; sourceTree = "<group>"; };
 		C35B380D2B54264E00D983D8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		C35B380F2B549C0100D983D8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C35B38192B570D9400D983D8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		C38472552B7EEB680048A96B /* ClientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailView.swift; sourceTree = "<group>"; };
+		C38472572B7EEB860048A96B /* ClientDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailViewModel.swift; sourceTree = "<group>"; };
 		C395D1162B3FD93300B6F3D4 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		C395D1182B3FD99100B6F3D4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C3A617922B3A0EFB0023A746 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		C3A617942B3A0FA80023A746 /* ConterAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConterAgent.swift; sourceTree = "<group>"; };
+		C3A617942B3A0FA80023A746 /* Counterparty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counterparty.swift; sourceTree = "<group>"; };
 		C3A617962B3A17320023A746 /* RepairsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairsListView.swift; sourceTree = "<group>"; };
 		C3B5EB792B5F3198003524FA /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		C3B5EB7B2B61CA74003524FA /* DBUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUser.swift; sourceTree = "<group>"; };
@@ -96,6 +108,10 @@
 		C3C9046C2B4F57CD000B4251 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		C3C9046E2B4F57F8000B4251 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		C3C904702B4F5832000B4251 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		C3E5550F2B7AE76900BF45A6 /* ClientsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsListViewModel.swift; sourceTree = "<group>"; };
+		C3E555112B7AE7E500BF45A6 /* ClientsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsManager.swift; sourceTree = "<group>"; };
+		C3E555132B7AF3CB00BF45A6 /* AddNewClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClientView.swift; sourceTree = "<group>"; };
+		C3E555152B7AF3E500BF45A6 /* AddNewClientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClientViewModel.swift; sourceTree = "<group>"; };
 		C3E96B902B5BF2BA00953757 /* BindingValueModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingValueModifier.swift; sourceTree = "<group>"; };
 		C3F87D0A2B36B6A2009C3EBC /* Repair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repair.swift; sourceTree = "<group>"; };
 		C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsListView.swift; sourceTree = "<group>"; };
@@ -207,8 +223,10 @@
 		C35B38062B514E2500D983D8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				C3B5EB7D2B630C97003524FA /* Repairs */,
+				C38472542B7EDBA20048A96B /* MainView */,
 				C3C9046B2B4F5797000B4251 /* Auth */,
+				C3B5EB7D2B630C97003524FA /* Repairs */,
+				C3E5550E2B7AE72700BF45A6 /* Clients */,
 				C35B38112B549C2800D983D8 /* Profile */,
 			);
 			path = Modules;
@@ -222,6 +240,14 @@
 				C3B5EB792B5F3198003524FA /* UserManager.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		C38472542B7EDBA20048A96B /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				C3243E7C2B2F913000071C8F /* MainView.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		C3B5EB762B5F29B5003524FA /* Frameworks */ = {
@@ -238,6 +264,8 @@
 				C3B5EB802B630E19003524FA /* RepairsListViewModel.swift */,
 				C3B5EB822B63A0B8003524FA /* AddNewRepairView.swift */,
 				C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */,
+				C346B22B2B6ADB2200D94DC5 /* RepairDetailView.swift */,
+				C346B22D2B6AE0E900D94DC5 /* RepairDetailViewModel.swift */,
 				C3B5EB7E2B630D8B003524FA /* RepairsManager.swift */,
 			);
 			path = Repairs;
@@ -255,11 +283,23 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		C3E5550E2B7AE72700BF45A6 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */,
+				C3E5550F2B7AE76900BF45A6 /* ClientsListViewModel.swift */,
+				C3E555132B7AF3CB00BF45A6 /* AddNewClientView.swift */,
+				C3E555152B7AF3E500BF45A6 /* AddNewClientViewModel.swift */,
+				C38472552B7EEB680048A96B /* ClientDetailView.swift */,
+				C38472572B7EEB860048A96B /* ClientDetailViewModel.swift */,
+				C3E555112B7AE7E500BF45A6 /* ClientsManager.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
 		C3F87D062B36B601009C3EBC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C3243E7C2B2F913000071C8F /* MainView.swift */,
-				C3F87D0E2B36C7B3009C3EBC /* ClientsListView.swift */,
 				C3F87D102B36C7D4009C3EBC /* ConteragentListView.swift */,
 			);
 			path = Views;
@@ -270,7 +310,7 @@
 			children = (
 				C3F87D0A2B36B6A2009C3EBC /* Repair.swift */,
 				C3A617922B3A0EFB0023A746 /* Client.swift */,
-				C3A617942B3A0FA80023A746 /* ConterAgent.swift */,
+				C3A617942B3A0FA80023A746 /* Counterparty.swift */,
 				C35B38192B570D9400D983D8 /* UserModel.swift */,
 				C3B5EB7B2B61CA74003524FA /* DBUser.swift */,
 			);
@@ -423,23 +463,31 @@
 				C395D1192B3FD99100B6F3D4 /* ProfileView.swift in Sources */,
 				C3B5EB7C2B61CA74003524FA /* DBUser.swift in Sources */,
 				C35B380E2B54264E00D983D8 /* AuthenticationManager.swift in Sources */,
+				C38472582B7EEB860048A96B /* ClientDetailViewModel.swift in Sources */,
 				C346B2302B72F33F00D94DC5 /* AddNewRepairViewModel.swift in Sources */,
+				C3E555102B7AE76900BF45A6 /* ClientsListViewModel.swift in Sources */,
 				C35B381A2B570D9400D983D8 /* UserModel.swift in Sources */,
 				C3A617972B3A17320023A746 /* RepairsListView.swift in Sources */,
 				C395D1172B3FD93300B6F3D4 /* AuthView.swift in Sources */,
 				C3B5EB832B63A0B9003524FA /* AddNewRepairView.swift in Sources */,
 				C3F87D0F2B36C7B3009C3EBC /* ClientsListView.swift in Sources */,
+				C38472562B7EEB680048A96B /* ClientDetailView.swift in Sources */,
 				C3C9046D2B4F57CD000B4251 /* SignInView.swift in Sources */,
+				C3E555122B7AE7E500BF45A6 /* ClientsManager.swift in Sources */,
 				C3243E7B2B2F913000071C8F /* ReFixApp.swift in Sources */,
+				C3E555142B7AF3CB00BF45A6 /* AddNewClientView.swift in Sources */,
 				C3C9046F2B4F57F8000B4251 /* SignUpView.swift in Sources */,
 				C3F87D0B2B36B6A2009C3EBC /* Repair.swift in Sources */,
 				C3B5EB7F2B630D8B003524FA /* RepairsManager.swift in Sources */,
+				C3E555162B7AF3E500BF45A6 /* AddNewClientViewModel.swift in Sources */,
 				C3C904712B4F5832000B4251 /* AuthViewModel.swift in Sources */,
 				C3B5EB892B68B0E5003524FA /* QuerySnapshotModifier.swift in Sources */,
 				C3C9046A2B4CAE9C000B4251 /* ClearButtonViewModifier.swift in Sources */,
 				C3B5EB872B68A4B5003524FA /* QueryDocumentSnapshotModifier.swift in Sources */,
+				C346B22E2B6AE0E900D94DC5 /* RepairDetailViewModel.swift in Sources */,
 				C3E96B912B5BF2BA00953757 /* BindingValueModifier.swift in Sources */,
-				C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */,
+				C3A617952B3A0FA80023A746 /* Counterparty.swift in Sources */,
+				C346B22C2B6ADB2200D94DC5 /* RepairDetailView.swift in Sources */,
 				C35B38102B549C0100D983D8 /* ProfileViewModel.swift in Sources */,
 				C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */,
 				C3B5EB812B630E19003524FA /* RepairsListViewModel.swift in Sources */,

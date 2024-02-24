@@ -9,7 +9,6 @@ import Foundation
 
 @MainActor
 final class RepairsListViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
     @Published internal var repairListArray: [Repair] = []
     
@@ -18,26 +17,16 @@ final class RepairsListViewModel: ObservableObject {
     @Published var isAddNewRepairPresented: Bool = false
     
     var searchResults: [Repair] {
-        if searchText.isEmpty {
-            return repairListArray.sorted { $0.id > $1.id }
-        } else {
-            return repairListArray
-                .filter { $0.model.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.brand.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.id.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.imei.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-            + repairListArray
-                .filter { $0.serialNumber.description.contains(searchText) }
-                .sorted { $0.id > $1.id }
-//                 + repairsArray.filter { $0.client.name.contains(searchText) }
-//                 + repairsArray.filter { $0.client.phoneNumber.contains(searchText)}
+        get {
+            if searchText.isEmpty {
+                return repairListArray.sorted { $0.id > $1.id }
+            } else {
+                return searchResult()
+            }
+        }
+        
+        set {
+            repairListArray = newValue
         }
     }
     
@@ -51,13 +40,15 @@ final class RepairsListViewModel: ObservableObject {
     var futureRepairId: Int {
         repairListArray.count + 1
     }
-    
-    func loadCurrentUser() async throws {
+}
+
+extension RepairsListViewModel {
+    private func loadCurrentUser() async throws {
         let userModel = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = try await UserManager.shared.getUser(userId: userModel.uid)
+        self.user = DBUser(user: userModel)
     }
     
-    func loadRepairsArray() async throws {
+    private func loadRepairsArray() async throws {
         guard let user = self.user else {
             print("Failed to download. No registered user!")
             return
@@ -67,5 +58,26 @@ final class RepairsListViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+extension RepairsListViewModel {
+    private func searchResult() -> [Repair] {
+        return repairListArray
+            .filter { $0.model.contains(searchText) }
+            .sorted { $0.id > $1.id }
+        + repairListArray
+            .filter { $0.brand.contains(searchText) }
+            .sorted { $0.id > $1.id }
+        + repairListArray
+            .filter { $0.id.description.contains(searchText) }
+            .sorted { $0.id > $1.id }
+        + repairListArray
+            .filter { $0.imei.description.contains(searchText) }
+            .sorted { $0.id > $1.id }
+        + repairListArray
+            .filter { $0.serialNumber.description.contains(searchText) }
+            .sorted { $0.id > $1.id }
+        //TODO: make possible to search by user name and phone number
     }
 }
