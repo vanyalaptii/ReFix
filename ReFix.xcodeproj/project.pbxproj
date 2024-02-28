@@ -15,6 +15,8 @@
 		C3243E962B2F913200071C8F /* ReFixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E952B2F913200071C8F /* ReFixUITests.swift */; };
 		C3243E982B2F913200071C8F /* ReFixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */; };
 		C3243EA82B2FB6F700071C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */; };
+		C346B22C2B6ADB2200D94DC5 /* RepairDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346B22B2B6ADB2200D94DC5 /* RepairDetailView.swift */; };
+		C346B22E2B6AE0E900D94DC5 /* RepairDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346B22D2B6AE0E900D94DC5 /* RepairDetailViewModel.swift */; };
 		C346B2302B72F33F00D94DC5 /* AddNewRepairViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */; };
 		C35B380E2B54264E00D983D8 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B380D2B54264E00D983D8 /* AuthenticationManager.swift */; };
 		C35B38102B549C0100D983D8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35B380F2B549C0100D983D8 /* ProfileViewModel.swift */; };
@@ -75,6 +77,8 @@
 		C3243E972B2F913200071C8F /* ReFixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReFixUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C3243EA62B2FB40800071C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C3243EA72B2FB6F700071C8F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C346B22B2B6ADB2200D94DC5 /* RepairDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairDetailView.swift; sourceTree = "<group>"; };
+		C346B22D2B6AE0E900D94DC5 /* RepairDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepairDetailViewModel.swift; sourceTree = "<group>"; };
 		C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRepairViewModel.swift; sourceTree = "<group>"; };
 		C35B380D2B54264E00D983D8 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		C35B380F2B549C0100D983D8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				C3B5EB802B630E19003524FA /* RepairsListViewModel.swift */,
 				C3B5EB822B63A0B8003524FA /* AddNewRepairView.swift */,
 				C346B22F2B72F33F00D94DC5 /* AddNewRepairViewModel.swift */,
+				C346B22B2B6ADB2200D94DC5 /* RepairDetailView.swift */,
+				C346B22D2B6AE0E900D94DC5 /* RepairDetailViewModel.swift */,
 				C3B5EB7E2B630D8B003524FA /* RepairsManager.swift */,
 			);
 			path = Repairs;
@@ -438,8 +444,10 @@
 				C3B5EB892B68B0E5003524FA /* QuerySnapshotModifier.swift in Sources */,
 				C3C9046A2B4CAE9C000B4251 /* ClearButtonViewModifier.swift in Sources */,
 				C3B5EB872B68A4B5003524FA /* QueryDocumentSnapshotModifier.swift in Sources */,
+				C346B22E2B6AE0E900D94DC5 /* RepairDetailViewModel.swift in Sources */,
 				C3E96B912B5BF2BA00953757 /* BindingValueModifier.swift in Sources */,
 				C3A617952B3A0FA80023A746 /* ConterAgent.swift in Sources */,
+				C346B22C2B6ADB2200D94DC5 /* RepairDetailView.swift in Sources */,
 				C35B38102B549C0100D983D8 /* ProfileViewModel.swift in Sources */,
 				C3F87D112B36C7D4009C3EBC /* ConteragentListView.swift in Sources */,
 				C3B5EB812B630E19003524FA /* RepairsListViewModel.swift in Sources */,

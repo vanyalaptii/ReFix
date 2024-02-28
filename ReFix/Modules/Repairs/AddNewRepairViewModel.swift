@@ -10,8 +10,8 @@ import SwiftUI
 
 @MainActor
 final class AddNewRepairViewModel: ObservableObject {
-    
     @Published private(set) var user: DBUser? = nil
+    @Published var repairDatailIsPresented: Bool = false
     @Binding private(set) var repairListArray: [Repair]
     @Binding var addNewRepairIsPresented: Bool
     
@@ -32,6 +32,10 @@ final class AddNewRepairViewModel: ObservableObject {
         Task {
             try await loadCurrentUser()
         }
+    }
+    
+    var futureRepairId: Int {
+        repairListArray.count + 1
     }
     
     func loadCurrentUser() async throws {

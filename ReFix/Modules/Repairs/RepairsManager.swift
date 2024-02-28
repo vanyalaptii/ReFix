@@ -10,7 +10,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class RepairsManager {
-    
     static var shared = RepairsManager()
     
     private let userCollection = Firestore.firestore().collection("users")
@@ -29,6 +28,22 @@ final class RepairsManager {
     
     func createNewRepair(user: DBUser, repair: Repair) throws {
         try userCollection.document(user.userId).collection("repairs").document(repair.id.description).setData(from: repair, merge: true, encoder: encoder)
+    }
+    
+    func updateReapair(user: DBUser, updatedRepair: Repair) {
+        userCollection.document(user.userId).collection("repairs").document(updatedRepair.id.description).updateData(
+            [
+                "brand" : updatedRepair.brand,
+                "model" : updatedRepair.model,
+                "serial_number" : updatedRepair.serialNumber,
+                "imei" : updatedRepair.imei,
+                "malfunction" : updatedRepair.malfunction,
+                "description" : updatedRepair.description,
+                "client" : updatedRepair.client,
+                "employee" : updatedRepair.employee,
+                "repair_status" : updatedRepair.repairStatus
+            ]
+        )
     }
     
     func repairsCounter(user: DBUser) async -> Int {

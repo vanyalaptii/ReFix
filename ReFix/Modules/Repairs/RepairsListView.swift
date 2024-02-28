@@ -8,41 +8,18 @@
 import SwiftUI
 
 struct RelpairsListView: View {
+    @ObservedObject private var viewModel = RepairsListViewModel()
     
-    @StateObject var viewModel = RepairsListViewModel()
-    
-//    @State private var searchText = ""
-//    @State private var searchIsActive = false
-
     var body: some View {
-        
-        NavigationStack{
-            List(viewModel.searchResults) { item in
-                ZStack {
-                    HStack {
-                        VStack(alignment: .listRowSeparatorLeading, content: {
-                            Text("\(item.brand) \(item.model)")
-                                .font(.system(size: 17))
-                                .padding(1)
-                            Text("#\(item.id)")
-                                .font(.system(size: 15))
-                                .foregroundStyle(.secondary)
-                        })
-                        
-                        Spacer()
-                        
-                        details
-                    }
-                    .padding(.horizontal)
-                    
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .stroke(Color(uiColor: .tertiaryLabel), lineWidth: 1)
-                }
-                .listRowSeparator(.hidden)
+        NavigationView {
+            List($viewModel.searchResults) { $item in
+                listRepairRow(repair: $item)
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .navigationTitle("Ремонти")
+            .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive, prompt: "Пошук")
+            //TODO: Make search suggestions
             .toolbar {
                 Button("+") {
                     viewModel.isAddNewRepairPresented = true
@@ -57,8 +34,6 @@ struct RelpairsListView: View {
                         .presentationCompactAdaptation(.sheet)
                 }
             }
-            .searchable(text: $viewModel.searchText, isPresented: $viewModel.searchIsActive, prompt: "Пошук")
-            //TODO: Make search suggestions
         }
         .onAppear {
             UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Відмінити"
@@ -67,16 +42,30 @@ struct RelpairsListView: View {
 }
 
 extension RelpairsListView {
-    var details: some View {
-        HStack {
-            Text("Деталі")
-                .font(.system(size: 17))
-                .font(.system(.title3))
-                .foregroundStyle(.secondary)
+    private func listRepairRow(repair: Binding<Repair>) -> some View {
+        ZStack {
+            HStack {
+                VStack(alignment: .listRowSeparatorLeading, content: {
+                    Text("\(repair.wrappedValue.brand) \(repair.wrappedValue.model)")
+                        .font(.system(size: 17))
+                        .padding(1)
+                    Text("#\(repair.id)")
+                        .font(.system(size: 15))
+                        .foregroundStyle(.secondary)
+                })
+                Spacer()
+                NavigationLink(destination: {
+                    RepairDetailView()
+                        .environmentObject(RepairDetailViewModel(repair: repair))
+                }, label: {})
+                .frame(maxWidth: 30)
+            }
+            .padding(.horizontal)
             
-            Image(systemName: "chevron.right")
-                .opacity(0.5)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(Color(uiColor: .tertiaryLabel), lineWidth: 1)
         }
+        .listRowSeparator(.hidden)
     }
 }
 
